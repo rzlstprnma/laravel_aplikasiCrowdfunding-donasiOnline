@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// ========== middle =====
+Route::get('/middle', 'middle\\programController@middle');
+Route::resource('program', 'middle\\programController');
+
+
