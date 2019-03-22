@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 // ========== middle =====
 Route::get('/middle', 'middle\\programController@middle');
+Route::get('/daftarprogram', 'middle\\programController@daftarprogram');
 Route::resource('program', 'middle\\programController');
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

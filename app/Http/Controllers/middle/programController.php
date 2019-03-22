@@ -12,7 +12,6 @@ class programController extends Controller
     public function middle(){
         return view('middle.index');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +21,7 @@ class programController extends Controller
     {
         $programs = Program::all();
 
-        return view('middle.program', ['programs' => $programs]);
+       return view('middle.program', ['programs' => $programs]);
     }
 
     /**
@@ -32,7 +31,7 @@ class programController extends Controller
      */
     public function create()
     {
-        //
+        return view('middle.create');
     }
 
     /**
@@ -43,7 +42,19 @@ class programController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate( request() , [
+        //     'title' => 'max:100',
+        //     'donation_target' => 'numeric',
+        // ]);
+
+       $program = Program::create($request->all());
+       if($request->hasFile('photo'))
+       {
+           $request->file('photo')->move('images/program-images/', $request->file('photo')->getClientOriginalName());
+           $program->photo = $request->file('photo')->getClientOriginalName();
+           $program->save();
+       }
+        return redirect('/program');
     }
 
     /**

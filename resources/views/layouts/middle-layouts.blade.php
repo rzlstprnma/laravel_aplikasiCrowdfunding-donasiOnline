@@ -25,12 +25,8 @@
         <li class="has-children">
         <a href="/middle"><i class="la la-dashboard"></i><span>Dashboards</span></a>
         </li>
-        
-        <li class="has-children"><a href="#"><i class="la la-dashboard"></i><span>Daftar Program</span></a></li>
-
-        <li class="has-children"><a href="#"><i class="la la-dashboard"></i><span>Tambah Program</span></a></li>
          
-        <li class="has-children"><a href="#"><i class="la la-dashboard"></i><span>Laporan & Perkembangan</span></a></li>
+        <li class="has-children"><a href="/laporanperkembangan"><i class="la la-dashboard"></i><span>Laporan & Perkembangan</span></a></li>
         
         <li class="has-children"><a href="{{route('program.index')}}"><i class="la la-pencil"></i><span>Kelola Program</span></a></li>
 
@@ -69,6 +65,7 @@
   </div>
   <script src="{{asset('middle-assets/js/main.min.js')}}"></script>
   <script src="{{asset('middle-assets/js/chartDemoWidget.min.js')}}"></script>
+  @yield('script')
 </body>
 
 </html>
