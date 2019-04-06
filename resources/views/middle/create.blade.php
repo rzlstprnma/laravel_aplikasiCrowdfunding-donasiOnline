@@ -42,6 +42,9 @@ textarea{
         <div class="box-body">
       <form action="{{route('program.store')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
+
+        <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
+
         <div class="form-group label--floating"><input type="text" name="title"><label>Judul Program</label></div>
 
         <div class="form-group label--floating"><input type="text" name="area_name"><label>Nama Wilayah</label></div>

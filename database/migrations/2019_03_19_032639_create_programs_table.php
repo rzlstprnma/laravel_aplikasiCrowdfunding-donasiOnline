@@ -18,6 +18,7 @@ class CreateProgramsTable extends Migration
             $table->integer('users_id');
             $table->string('title', 100);
             $table->string('area_name',100);
+            $table->string('photo', 200);
             $table->string('brief_explanation', 200);
             $table->integer('donation_target');
             $table->timestamp('start_time');

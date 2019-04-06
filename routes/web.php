@@ -11,16 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'front\\frontController@index');
 
 // ========== middle =====
-Route::get('/middle', 'middle\\programController@middle');
-Route::get('/daftarprogram', 'middle\\programController@daftarprogram');
-Route::resource('program', 'middle\\programController');
-
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/laporanperkembangan/create/{id}', 'middle\\programController@createlaporanperkembangan');
+    Route::post('/laporanperkembangan/store', 'middle\\programController@storelaporanperkembangan');
+    Route::get('/middle', 'middle\\programController@middle');
+    Route::get('/detailprogram/{id}', 'middle\\programController@detailprogram')->name('detail');
+    Route::resource('program', 'middle\\programController');
+});
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// ============ front ====
+Route::get('/donasi/{id}', 'front\\frontController@donasi');
+Route::post('/donasi/store/{id}', 'front\\frontController@store');
+
+

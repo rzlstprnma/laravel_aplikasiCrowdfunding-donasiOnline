@@ -48,7 +48,14 @@
             </div>
             <ul class="dropdown-body">
               <li><a href="https://github.com/aljazari-studio" target="_blank"><i class="la la-user"></i><span>My profile</span></a></li>
-              <li><a href="./pages/login.html"><i class="la la-power-off"></i><span>Log out</span></a></li>
+              <li><a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                 <i class="la la-power-off"></i><span>Log out</span></a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+                </li>
             </ul>
           </div>
         </li>

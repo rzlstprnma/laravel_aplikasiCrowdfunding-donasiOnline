@@ -4,10 +4,30 @@ namespace App\Http\Controllers\middle;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 use App\Program;
+use App\Development;
 
 class programController extends Controller
 {
+
+    
+    public function createlaporanperkembangan($id){
+        $program = Program::find($id);
+        return view('middle.createdevelopment', ['program' => $program]);
+    }
+    
+    public function storelaporanperkembangan(Request $request){
+        $dev = Development::create($request->all());
+        return redirect()->route('detail', ['id' => $dev->program_id]);
+    }
+
+    public function detailprogram($id){
+        $program = Program::find($id);
+        $devs = Development::all()->where('program_id', $program->id);
+
+        return view('middle.detailprogram', ['program' => $program], ['devs' => $devs]);
+    }
 
     public function middle(){
         return view('middle.index');
@@ -19,7 +39,7 @@ class programController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
+        $programs = Program::all()->where('users_id', Auth::user()->id);
 
        return view('middle.program', ['programs' => $programs]);
     }
@@ -76,7 +96,8 @@ class programController extends Controller
      */
     public function edit($id)
     {
-        //
+        $program = Program::find($id);
+        return view('middle.edit', ['program' => $program]);
     }
 
     /**
@@ -88,7 +109,16 @@ class programController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $program = Program::find($id);
+        $program->update($request->all());
+        if($request->hasFile('photo'))
+        {
+            $request->file('photo')->move('images/program-images/', $request->file('photo')->getClientOriginalName());
+            $program->photo = $request->file('photo')->getClientOriginalName();
+            $program->update();
+        }
+
+        return redirect('/program');
     }
 
     /**

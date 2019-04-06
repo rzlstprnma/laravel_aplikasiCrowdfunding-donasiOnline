@@ -1,0 +1,42 @@
+.card {
+  width: auto;
+  height: auto;
+  background-color: #ECECEC;
+  border: 1px solid #E3E5E7 !important;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
+.brief {
+  width: 100%;
+  height: auto;
+  margin-top: 10px !important;
+}
+
+.brief p {
+  font-size: 14px;
+  text-overflow: hidden;
+}
+
+.area-name {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #131E77;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.btn-donasi {
+  background-color: #D9EF81;
+  border-radius: 0;
+  color: #09264A;
+}
+
+.fixed {
+  position: fixed;
+}
+/*# sourceMappingURL=donasi.css.map */
