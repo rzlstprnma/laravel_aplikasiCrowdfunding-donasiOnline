@@ -24,9 +24,10 @@
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
-          <li><a href="#">Donasi</a></li>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Daftar</a></li>
+          <li><a class="nav-link" href="/daftarprogram">Donasi</a></li>
+          <li><a class="nav-link" href="/konfirmasi">Konfirmasi Pendonasian</a></li>
+          <li><a class="nav-link" href="/login">Login</a></li>
+          <li><a class="nav-link" href="/register">Daftar</a></li>
         </ul>
       </div>
     </header>
@@ -37,20 +38,23 @@
 
   <script src="{{asset('front-assets/js/jquery.js')}}"></script>
   <script src="{{asset('front-assets/js/bootstrap.min.js')}}"></script>
-  <script>
-    var yourNavigation = $(".navbar");
-    stickyDiv = "sticky";
-    yourHeader = $('.hulu').height();
-
-  $(window).scroll(function() {
-    if( $(this).scrollTop() > yourHeader ) {
-      yourNavigation.addClass(stickyDiv);
-    } else {
-      yourNavigation.removeClass(stickyDiv);
+ @yield('script')
+<script>
+    $(window).on('scroll',function(){
+    if($(window).scrollTop()){
+      $('.nav-bar').addClass('black');
+      $('.nav-link').addClass('gelap')
+      $('.logo').addClass('dark')
+    }else {
+      $('.nav-bar').removeClass('black');
+      $('.nav-link').removeClass('gelap');
+      $('.logo').removeClass('dark')
     }
-  });
-  </script>
-  @yield('script')
+  })
+
+
+</script> 
+
 
 </body>
 </html>

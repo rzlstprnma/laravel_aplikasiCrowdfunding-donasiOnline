@@ -1,0 +1,82 @@
+.lobilists .lobilist {
+  box-shadow: none; }
+
+.lobilists .lobilist.lobilist-primary {
+  border-color: #e9ecef; }
+  .lobilists .lobilist.lobilist-primary .lobilist-header,
+  .lobilists .lobilist.lobilist-primary .lobilist-footer,
+  .lobilists .lobilist.lobilist-primary .lobilist-form-footer {
+    border-color: #007bff;
+    background-color: #007bff; }
+
+.lobilists .lobilist.lobilist-danger {
+  border-color: #e9ecef; }
+  .lobilists .lobilist.lobilist-danger .lobilist-header,
+  .lobilists .lobilist.lobilist-danger .lobilist-footer,
+  .lobilists .lobilist.lobilist-danger .lobilist-form-footer {
+    border-color: #dc3545;
+    background-color: #dc3545; }
+
+.lobilists .lobilist.lobilist-info {
+  border-color: #e9ecef; }
+  .lobilists .lobilist.lobilist-info .lobilist-header,
+  .lobilists .lobilist.lobilist-info .lobilist-footer,
+  .lobilists .lobilist.lobilist-info .lobilist-form-footer {
+    border-color: #4fc3f7;
+    background-color: #4fc3f7; }
+
+.lobilists .lobilist.lobilist-success {
+  border-color: #e9ecef; }
+  .lobilists .lobilist.lobilist-success .lobilist-header,
+  .lobilists .lobilist.lobilist-success .lobilist-footer {
+    border-color: #28a745;
+    background-color: #28a745; }
+
+.lobilists .lobilist-footer,
+.lobilists .lobilist-form-footer {
+  border-color: #e9ecef !important;
+  background: rgba(0, 0, 0, 0.02) !important; }
+
+.lobilists .btn-link {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #32325d !important; }
+
+.lobilists.single-line {
+  height: 500px; }
+
+.lobilist,
+.lobilists {
+  position: relative; }
+
+.lobilists [type="checkbox"]:not(:checked),
+.lobilists [type="checkbox"]:checked {
+  opacity: 1;
+  position: relative; }
+
+.lobilists .lobilist-item {
+  margin-bottom: 16px;
+  padding-top: 5px; }
+
+.lobilists .lobilist-item-title {
+  color: #32325d; }
+
+.lobilists .lobilist-item-description {
+  font-style: normal;
+  font-size: 13px; }
+
+.lobilists .lobilist-check {
+  top: 10px; }
+
+.lobilists .lobilist-item-duedate {
+  position: relative;
+  font-size: 12px;
+  left: 0px; }
+
+.lobilists .lobilist-actions {
+  top: 0px; }
+
+.lobilist-actions .btn i {
+  font-size: 15px;
+  vertical-align: middle; }

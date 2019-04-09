@@ -9,9 +9,34 @@
 
 @section('content') 
 
-    <section class="section-1">
-        <img src="{{asset('images/program-images/Overlooking_by_Lance_Asper.jpg')}}">
-    </section>
+        <div class="jumbotron-fluid"></div>
+
+        <div class="aksi">
+            <p>Galang Dana untuk Hal yang Anda Perjuangkan</p>
+            <a href="/program" class="btn btn-galang">Galang Dana Sekarang</a>
+        </div>
+
+        <div class="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <span>100000</span>
+                        <p>Donatur</p>
+                    </div>
+
+                    <div class="col-4">
+                        <span>100000</span>
+                        <p>Donatur</p>
+                    </div>
+
+                    <div class="col-4">
+                         <span>100000</span>
+                        <p>Donatur</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     <section class="section-2">
         <div class="header mt-4">
@@ -30,32 +55,34 @@
                             <img src="{{$program->getFoto()}}" alt="Program Image">
 
                             <div class="container mt-3">
-                                    <p class="title">{{$program->title}}</p><span class="area-name">{{$program->area_name}}</span><hr>  
+                                    <p class="title">{{$program->title}}</p><span>
                                     <div class="brief">
                                         <p>{{$program->brief_explanation}}</p>
                                     </div>
                             </div>
-                                    <table class="table">
-                                      <tbody>
-                        
-                                        <tr>
-                                          <td>Berakhir</td>
-                                          <td>{{$program->time_is_up}}</td>
-                                        </tr>
-                        
-                                        <tr>
-                                          <td>Target Donasi</td>
-                                          <td>{{$program->donation_target}}</td>
-                                        </tr>
-                        
-                                        <tr>
-                                          <td>Donasi Terkumpul</td>
-                                          <td>{{$program->donation_collected}}</td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                            </div></a>
-                    </div>
+                                    <div class="programs-info">
+                                    <div class="waktu">
+                                        <div class="container">
+                                        <span>Kategori</span><p>Kemanusiaan</p>
+                                        <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="dana">
+                                        <div class="container">
+                                        <span>Terkumpul</span><p class="collected">@if ($program->donation_collected == 0)
+                                            0
+                                        @else
+                                        {{$program->donation_collected}}
+                                        @endif</p>
+                                        <span>Target</span><p>{{$program->donation_target}}</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                            
+
+                            </div>
+                    </div></a>
                     @endforeach
                 </div>
             </div>
@@ -82,30 +109,31 @@
                                 <img src="{{$program->getFoto()}}" alt="Program Image">
     
                                 <div class="container mt-3">
-                                        <p class="title">{{$program->title}}</p><span class="area-name">{{$program->area_name}}</span><hr>  
+                                        <p class="title">{{$program->title}}</p><span>
                                         <div class="brief">
                                             <p>{{$program->brief_explanation}}</p>
                                         </div>
                                 </div>
-                                        <table class="table">
-                                          <tbody>
-                            
-                                            <tr>
-                                              <td>Berakhir</td>
-                                              <td>{{$program->time_is_up}}</td>
-                                            </tr>
-                            
-                                            <tr>
-                                              <td>Target Donasi</td>
-                                              <td>{{$program->donation_target}}</td>
-                                            </tr>
-                            
-                                            <tr>
-                                              <td>Donasi Terkumpul</td>
-                                              <td>{{$program->donation_collected}}</td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
+                                <div class="programs-info">
+                                        <div class="waktu">
+                                            <div class="container">
+                                            <span>Kategori</span><p>Kemanusiaan</p>
+                                            <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
+                                            </div>
+                                        </div>
+    
+                                        <div class="dana">
+                                            <div class="container">
+                                            <span>Terkumpul</span><p>@if ($program->donation_collected == 0)
+                                                0
+                                            @else
+                                            {{$program->donation_collected}}
+                                            @endif</p>
+                                            <span>Target</span><p>{{$program->donation_target}}</p>
+                                            </div>
+                                        </div>
+                                        </div>
+
                                 </div></a>
                             </div>
                         @endforeach

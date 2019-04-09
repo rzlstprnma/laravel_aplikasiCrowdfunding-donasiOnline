@@ -1,8 +1,24 @@
+.nav-bar {
+  background-color: #fff;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.nav-bar li a {
+  color: #333;
+}
+
+.logo {
+  background-color: #000000;
+  color: #fff;
+}
+
 .card {
   width: auto;
   height: auto;
-  background-color: #ECECEC;
+  background-color: #fff;
   border: 1px solid #E3E5E7 !important;
+  color: #09264A;
 }
 
 .card img {
@@ -21,15 +37,6 @@
   text-overflow: hidden;
 }
 
-.area-name {
-  font-size: 10px;
-  font-weight: bold;
-  background-color: #131E77;
-  color: #fff;
-  border-radius: 4px;
-  padding: 2px;
-}
-
 .btn-donasi {
   background-color: #D9EF81;
   border-radius: 0;
@@ -37,6 +44,88 @@
 }
 
 .fixed {
-  position: fixed;
+  position: relative;
+}
+
+.program-info {
+  width: 100%;
+  border-top: 1px solid #e9e9e9;
+}
+
+.waktu {
+  border-right: 1px solid #e9e9e9;
+  float: left;
+  width: 50%;
+}
+
+.dana {
+  width: 50%;
+  float: right;
+  font-weight: bold;
+}
+
+.collected {
+  font-size: 18px !important;
+}
+
+@media (min-width: 768px) {
+  .nav-bar {
+    background-color: #fff;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  .nav-bar li a {
+    color: #333;
+  }
+  .logo {
+    background-color: #000000;
+    color: #fff;
+  }
+  .card {
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #E3E5E7 !important;
+    color: #09264A;
+  }
+  .card img {
+    width: 100%;
+    height: 100%;
+  }
+  .brief {
+    width: 100%;
+    height: auto;
+    margin-top: 10px !important;
+  }
+  .brief p {
+    font-size: 14px;
+    text-overflow: hidden;
+  }
+  .btn-donasi {
+    background-color: #D9EF81;
+    border-radius: 0;
+    color: #09264A;
+  }
+  .fixed {
+    position: fixed;
+    width: 400px;
+  }
+  .program-info {
+    width: 100%;
+    border-top: 1px solid #e9e9e9;
+  }
+  .waktu {
+    border-right: 1px solid #e9e9e9;
+    float: left;
+    width: 50%;
+  }
+  .dana {
+    width: 50%;
+    float: right;
+    font-weight: bold;
+  }
+  .collected {
+    font-size: 18px !important;
+  }
 }
 /*# sourceMappingURL=donasi.css.map */

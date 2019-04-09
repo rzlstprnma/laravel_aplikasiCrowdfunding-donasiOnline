@@ -24,4 +24,13 @@ class frontController extends Controller
         return redirect('/');
     }
 
+    public function daftarprogram(){
+        $programs = Program::all();
+        return view('daftarprogram', ['programs' => $programs]);
+    }
+
+    public function konfirmasi(){
+        $programs = Program::all();
+        return view('konfirmasi', ['programs' => $programs]);
+    }
 }

@@ -1,33 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+*{
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+  background-color: #fff !important;
+}
 
 header{
     padding-bottom: 80px;
 }
 
 .nav-bar {
-    background-color: #fff;
     width: 100%;
-    z-index: 3;
+    position: fixed;
+    box-sizing: border-box;
+    transition: .5s;
+    z-index: 1;
     top: 0;
   }
-  
+
+  .nav-bar.black{
+    background: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    color: #333 !important;
+  }
+
   .nav-bar ul {
     margin: 0;
     padding: 0;
     list-style: none;
     overflow: hidden;
-    background-color: #fff;
   }
   
-  .nav-bar li a {
+  .nav-bar li a{
     display: block;
     padding: 20px 20px;
-    border-right: 1px solid #f4f4f4;
     text-decoration: none;
+    color: #fff;
   }
-  
+
+  .dark{
+    background-color: #000;
+  }
+
+  .gelap{
+    color: #333 !important;
+  }
+
   .nav-bar li a:hover,
   .nav-bar .menu-btn:hover {
-    background-color: #f4f4f4;
+    opacity: 3;
   }
   
   .nav-bar .logo {
@@ -36,11 +61,12 @@ header{
     font-size: 2em;
     padding: 10px 20px;
     text-decoration: none;
+    color: #fff;
   }
   
   /* menu */
   
-  .nav-bar .menu {
+  .nav-bar .menu{
     clear: both;
     max-height: 0;
     transition: max-height .2s ease-out;
@@ -51,7 +77,6 @@ header{
   .nav-bar .menu-icon {
     cursor: pointer;
     display: inline-block;
-    float: right;
     padding: 28px 20px;
     position: relative;
     user-select: none;
@@ -131,3 +156,126 @@ header{
     }
   }
   
+
+  @media (max-width: 768px) { 
+    
+  header{
+    padding-bottom: 80px;
+  }
+
+.nav-bar {
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+  }
+  
+  .nav-bar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: transparent;
+  }
+  
+  .nav-bar li a {
+    color: #333 !important;
+    display: block;
+    padding: 20px 20px;
+    text-decoration: none;
+  }
+  
+  .nav-bar li a:hover,
+  .nav-bar .menu-btn:hover {
+    opacity: 3;
+  }
+  
+  .nav-bar .logo {
+    color: #333 !important;
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #fff;
+  }
+  
+  /* menu */
+  
+  .nav-bar .menu {
+    color: #333;
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+  }
+  
+  /* menu icon */
+  
+  .nav-bar .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+    float: right;
+  }
+  
+  .nav-bar .menu-icon .navicon {
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+  }
+  
+  .nav-bar .menu-icon .navicon:before,
+  .nav-bar .menu-icon .navicon:after {
+    background: #333;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+  }
+  
+  .nav-bar .menu-icon .navicon:before {
+    top: 5px;
+  }
+  
+  .nav-bar .menu-icon .navicon:after {
+    top: -5px;
+  }
+  
+  /* menu btn */
+  
+  .nav-bar .menu-btn {
+    display: none;
+  }
+  
+  .nav-bar .menu-btn:checked ~ .menu {
+    max-height: 240px;
+  }
+  
+  .nav-bar .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+  
+  .nav-bar .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+  }
+  
+  .nav-bar .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+  }
+  
+  .nav-bar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .nav-bar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+  }
+  
+
+  }
+

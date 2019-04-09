@@ -1,0 +1,89 @@
+.fc .fc-row{
+    margin-right: 0 !important;
+}
+
+.fc-basic-view .fc-body .fc-row {
+    min-height: 5rem;
+}
+
+.fc-toolbar .fc-button-group {
+    border: 1px solid #3bbcf5;
+    border-radius: 4px;
+}
+
+.fc-toolbar .fc-button {
+    background: #3bbcf5;
+    border: 1px solid #2cabe3;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.fc-toolbar .fc-button:hover {
+    background: #3bbcf5;
+    opacity: .8;
+}
+
+.fc-toolbar .fc-button.fc-state-active {
+    background: #3bbcf5;
+    color: #fff;
+    border: 1px solid #2cabe3;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.fc-widget-header {
+    border: 0px !important;
+}
+
+.fc-widget-content {
+    border-color: rgba(120, 130, 140, 0.13) !important;
+}
+
+.fc-widget-content tr {
+    border-bottom: none;
+}
+
+.fc-view {
+    margin-top: 0px;
+}
+
+.fc-toolbar {
+    margin-bottom : 0px !important;
+    padding: 24px 20px;
+    background: #2cabe3;
+}
+
+.fc-toolbar h2{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.fc-event {
+    border-radius: 0px;
+    border: none;
+    cursor: move;
+    color: #fff !important;
+    font-size: 13px;
+    margin: 1px -1px 0 -1px;
+    padding: 5px 5px;
+    text-align: center;
+    background: #40c4ff;
+}
+
+.fc th.fc-widget-header {
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 7px 0;
+    text-transform: uppercase;
+}
+
+.fc th.fc-sat, .fc th.fc-sun, .fc th.fc-thu, .fc th.fc-tue{
+    background: #34b6ef;
+}
+
+.fc th.fc-fri, .fc th.fc-mon, .fc th.fc-wed{
+    background: #3bbcf5;
+}

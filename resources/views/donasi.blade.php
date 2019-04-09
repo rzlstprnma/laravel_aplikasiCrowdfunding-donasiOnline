@@ -17,34 +17,34 @@
                    <img src="{{$program->getFoto()}}" alt="Program Image">
 
                    <div class="container mt-3">
-                        <p class="title">{{$program->title}}</p><span class="area-name">{{$program->area_name}}</span><hr>  
+                        <p class="title">{{$program->title}}</p>
                         <div class="brief">
                             <p>{{$program->brief_explanation}}</p>
                         </div>
-                </div>
-                        <table class="table table-bordered">
-                          <tbody>
-            
-                            <tr>
-                              <td>Berakhir</td>
-                              <td>{{$program->time_is_up}}</td>
-                            </tr>
-            
-                            <tr>
-                              <td>Target Donasi</td>
-                              <td>{{$program->donation_target}}</td>
-                            </tr>
-            
-                            <tr>
-                              <td>Donasi Terkumpul</td>
-                              <td>{{$program->donation_collected}}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </div>
+                    <div class="program-info">
+                        <div class="waktu">
+                            <div class="container">
+                            <span>Kategori</span><p>Kemanusiaan</p>
+                            <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
+                            </div>
+                        </div>
+
+                        <div class="dana">
+                            <div class="container">
+                            <span>Terkumpul</span><p class="collected">@if ($program->donation_collected == 0)
+                                0
+                            @else
+                            {{$program->donation_collected}}
+                            @endif</p>
+                            <span>Target</span><p>{{$program->donation_target}}</p>
+                            </div>
+                        </div>
+                    </div>
                </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 donate">
                 <p class="mt-3">{{$program->brief_explanation}}</p>
 
                 <form action="/donasi/store/{{$program->id}}" class="fixed" method="post">
@@ -53,7 +53,7 @@
                 <input type="hidden" name="program_id" value="{{$program->id}}">
                 <div class="form-group">
                     <label>Masukan Nominal Donasi</label>
-                    <input type="number" class="form-control" min="10000" name="nominal_donasi">
+                    <input type="number" class="form-control" min="10000" step="1000" name="nominal_donasi">
                 </div>
 
                 <button class="btn btn-donasi">Donasi Sekarang</button>
@@ -62,12 +62,4 @@
         </div>
     </section>
 
-@endsection
-
-@section('script')
-    <script>
-        $('.fixed').on('click', function(){
-            addClass
-        })
-    </script>
 @endsection

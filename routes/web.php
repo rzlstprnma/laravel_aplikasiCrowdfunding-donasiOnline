@@ -28,5 +28,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 // ============ front ====
 Route::get('/donasi/{id}', 'front\\frontController@donasi');
 Route::post('/donasi/store/{id}', 'front\\frontController@store');
+Route::get('/daftarprogram', 'front\\frontController@daftarprogram');
+Route::get('/konfirmasi', 'front\\frontController@konfirmasi');
 
+Route::group(['prefix' => 'admin'], function () {
+   Route::group(['middleware' => ['auth']], function () {
+       Route::get('/dashboard', 'back\\backController@index');
+       Route::get('/program', 'back\\backController@program');
+   });   
+});
 

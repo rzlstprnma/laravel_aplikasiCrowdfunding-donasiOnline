@@ -1,9 +1,60 @@
-.nav-bar {
-  background-color: transparent !important;
+.aksi {
+  color: #fff;
+  text-align: center;
+  margin: -300px 10%;
+  position: absolute;
 }
 
-.section-1 {
-  margin-top: -120px !important;
+.btn-galang {
+  background-color: #D9EF81;
+  border-radius: 0;
+  color: #131E77;
+}
+
+.aksi p {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.info {
+  text-align: center;
+  width: 100%;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-top: -120px;
+  position: absolute;
+  color: #fff;
+  padding: 25px;
+}
+
+.info span {
+  font-size: 24px;
+}
+
+.info p {
+  top: -20px;
+  font-size: 17px;
+}
+
+.jumbotron-fluid {
+  background: url("../../images/4.-Membantu-orang-lain-dari-Ummi-Online (1).jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  position: relative;
+  margin-top: -80px;
+  height: 500px;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.jumbotron-fluid::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  bottom: 0;
 }
 
 section {
@@ -20,34 +71,29 @@ section {
   margin: 40px 35px !important;
 }
 
-.btn-galangdana {
-  border-radius: 0;
-  background-color: #D9EF81;
-  color: #131E77;
-}
-
 .section-2 .header {
   font-size: 23px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #131E77 !important;
+  color: #333 !important;
   text-align: center !important;
 }
 
 .section-2 .header hr {
   margin-top: 5px !important;
   width: 300px;
-  border: 2px solid #131E77;
+  border: 2px solid #333;
 }
 
 .card {
   margin-top: 30px !important;
   width: 100%;
-  background-color: #ECECEC;
-  border: 1px solid #E3E5E7 !important;
+  background-color: #fff;
   overflow: hidden;
   position: relative;
   display: inline-block;
   vertical-align: top;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .card:hover {
@@ -62,6 +108,7 @@ section {
 
 .title {
   font-weight: 200 !important;
+  text-transform: uppercase;
 }
 
 .card img {
@@ -84,16 +131,38 @@ section {
 }
 
 .brief p {
-  font-size: 14px;
+  font-size: 12px !important;
 }
 
-.area-name {
-  font-size: 10px;
+.waktu {
+  border-right: 1px solid #e9e9e9;
+  float: left;
+  width: 50%;
+  font-size: 12px;
+}
+
+.dana {
+  width: 50%;
+  float: right;
+}
+
+.dana span {
+  font-size: 12px;
   font-weight: bold;
-  background-color: #131E77;
-  color: #fff;
-  border-radius: 4px;
-  padding: 2px;
+}
+
+.collected {
+  font-size: 16px !important;
+  font-weight: bold;
+}
+
+.dana p {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.programs-info {
+  border-top: 1px solid #e9e9e9;
 }
 
 .btn-more {
@@ -135,5 +204,170 @@ footer ul li a {
 
 .copyright {
   font-size: 14px;
+}
+
+@media (min-width: 992px) {
+  .waktu {
+    border-right: 1px solid #e9e9e9;
+    float: left;
+    width: 50%;
+  }
+  .dana {
+    width: 50%;
+    float: right;
+  }
+  .programs-info {
+    border-top: 1px solid #e9e9e9;
+  }
+  .aksi {
+    width: 480px;
+    color: #fff;
+    text-align: center;
+    margin: -340px 32%;
+    position: absolute;
+  }
+  .btn-galang {
+    background-color: #D9EF81;
+    border-radius: 0;
+  }
+  .aksi p {
+    font-size: 36px;
+    font-weight: 200;
+  }
+  .info {
+    text-align: center;
+    width: 100%;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-top: -120px;
+    position: absolute;
+    color: #fff;
+    padding: 25px;
+  }
+  .info span {
+    font-size: 32px;
+    font-weight: 600;
+  }
+  .info p {
+    top: -20px;
+    font-size: 20px;
+    font-weight: 200;
+  }
+  .jumbotron-fluid {
+    background: url("../../images/4.-Membantu-orang-lain-dari-Ummi-Online (1).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: relative;
+    margin-top: -80px;
+    height: 500px;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+  }
+  .jumbotron-fluid::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    bottom: 0;
+  }
+  section {
+    margin: 20px 47px !important;
+  }
+  .img-wrapper img {
+    width: 100%;
+    height: 400px;
+    position: relative !important;
+  }
+  .section-2 {
+    margin: 40px 35px !important;
+  }
+  .section-2 .header {
+    font-size: 23px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333 !important;
+    text-align: center !important;
+  }
+  .section-2 .header hr {
+    margin-top: 5px !important;
+    width: 300px;
+    border: 2px solid #333;
+  }
+  .card {
+    margin-top: 30px !important;
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  .card:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  .content a {
+    color: #09264A;
+    text-decoration: none !important;
+  }
+  .title {
+    font-weight: 200 !important;
+  }
+  .card img {
+    width: 100%;
+    height: 210px;
+    -webkit-transition: .5s ease-out;
+    transition: .5s ease-out;
+  }
+  .card img:hover {
+    overflow: hidden;
+    -webkit-transform: scale(1.06) !important;
+            transform: scale(1.06) !important;
+  }
+  .brief {
+    width: 100%;
+    height: auto !important;
+    margin-top: 10px !important;
+  }
+  .brief p {
+    font-size: 14px;
+  }
+  .btn-more {
+    margin: 20px 70px;
+    background-color: #D9EF81;
+    border-radius: 0 !important;
+    color: #09264A;
+  }
+  footer {
+    width: 100%;
+    height: auto;
+    background-color: #ECECEC;
+    padding-bottom: 40px;
+  }
+  footer .col-md-6 {
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200 !important;
+    color: #333 !important;
+  }
+  footer hr {
+    margin-top: 0 !important;
+    border: .6px solid #333;
+  }
+  footer ul li {
+    font-size: 13px;
+    list-style: none;
+    margin-left: -20px !important;
+  }
+  footer ul li a {
+    text-decoration: none !important;
+    color: #333;
+  }
+  .copyright {
+    font-size: 14px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
