@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +13,7 @@
 Route::get('/', 'front\\frontController@index');
 
 // ========== middle =====
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/laporanperkembangan/create/{id}', 'middle\\programController@createlaporanperkembangan');
     Route::post('/laporanperkembangan/store', 'middle\\programController@storelaporanperkembangan');
@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/detailprogram/{id}', 'middle\\programController@detailprogram')->name('detail');
     Route::resource('program', 'middle\\programController');
 });
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -35,6 +36,10 @@ Route::group(['prefix' => 'admin'], function () {
    Route::group(['middleware' => ['auth']], function () {
        Route::get('/dashboard', 'back\\backController@index');
        Route::get('/program', 'back\\backController@program');
+       Route::get('/categories', 'back\\backController@categories');
+       Route::post('/categories/create', 'back\\backController@categoriescreate');
+       Route::get('/published/{id}', 'back\\backController@published');
+       Route::get('/selected/{id}', 'back\\backController@selected');
    });   
 });
 

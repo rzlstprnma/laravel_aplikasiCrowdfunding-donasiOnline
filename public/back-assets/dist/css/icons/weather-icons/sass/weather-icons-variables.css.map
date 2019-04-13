@@ -1,0 +1,17 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "weather-icons-variables.scss",
+        "icon-variables/variables-beaufort.scss",
+        "icon-variables/variables-time.scss",
+        "icon-variables/variables-moon.scss",
+        "icon-variables/variables-direction.scss",
+        "icon-variables/variables-day.scss",
+        "icon-variables/variables-night.scss",
+        "icon-variables/variables-neutral.scss",
+        "icon-variables/variables-misc.scss"
+    ],
+    "names": [],
+    "file": "weather-icons-variables.css"
+}

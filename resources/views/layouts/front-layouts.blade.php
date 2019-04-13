@@ -10,6 +10,7 @@
   <title>@yield('title')</title>
 
   <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
   <link href="{{asset('front-assets/css/bootstrap.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('front-assets/css/layouts.css')}}">
 
@@ -24,10 +25,32 @@
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
+          @if (Auth::check())
+            @if (Auth::user()->role == 1)
+              <li><a href="/admin/dashboard" class="nav-link">Kelola Admin</a></li> 
+            @else
+              <li><a href="/middle" class="nav-link">Galang Dana</a></li>
+            @endif          
+          @endif
+          
+
           <li><a class="nav-link" href="/daftarprogram">Donasi</a></li>
           <li><a class="nav-link" href="/konfirmasi">Konfirmasi Pendonasian</a></li>
+          @if (!Auth::check())
           <li><a class="nav-link" href="/login">Login</a></li>
-          <li><a class="nav-link" href="/register">Daftar</a></li>
+          <li><a class="nav-link" href="/register">Daftar</a></li> 
+          @else
+          <li><a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();" class="nav-link">Logout</a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
+          @endif
+          </li>
+          
+
+
         </ul>
       </div>
     </header>

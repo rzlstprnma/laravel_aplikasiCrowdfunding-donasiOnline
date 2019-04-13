@@ -127,15 +127,15 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="{{asset('back-assets/assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31">
-                                <span class="ml-2 user-text font-medium">Steve</span><span class="fas fa-angle-down ml-2 user-text"></span>
+                                <span class="ml-2 user-text font-medium">{{Auth::user()->name}}</span><span class="fas fa-angle-down ml-2 user-text"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <div class="d-flex no-block align-items-center p-3 mb-2 border-bottom">
                                     <div class=""><img src="{{asset('back-assets/assets/images/users/1.jpg')}}" alt="user" class="rounded" width="80"></div>
                                     <div class="ml-2">
-                                        <h4 class="mb-0">Steave Jobs</h4>
-                                        <p class=" mb-0 text-muted">varun@gmail.com</p>
-                                        <a href="javascript:void(0)" class="btn btn-sm btn-danger text-white mt-2 btn-rounded">View Profile</a>
+                                        <h4 class="mb-0">{{Auth::user()->name}}</h4>
+                                        <p class=" mb-0 text-muted">{{{Auth::user()->email}}}</p>
+                                        <a href="javascript:void(0)" class="btn btn-sm btn-danger text-white mt-2 btn-rounded">View Profile</a> 
                                     </div>
                                 </div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user mr-1 ml-1"></i> My Profile</a>
@@ -177,7 +177,7 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/admin/kategori" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin/categories" aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Kelola Kategori</span>
                             </a>
@@ -197,25 +197,6 @@
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb bg-white">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-xs-12 align-self-center">
-                        <h5 class="font-medium text-uppercase mb-0">Dashboard</h5>
-                    </div>
-                    <div class="col-lg-9 col-md-8 col-xs-12 align-self-center">
-                        <nav aria-label="breadcrumb" class="mt-2 float-md-right float-left">
-                            <ol class="breadcrumb mb-0 justify-content-end p-0 bg-white">
-                                <li class="breadcrumb-item"><a href="/admin/dashboard">Admin</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-
 
             <div class="page-content container-fluid">
                 @yield('content')
@@ -381,6 +362,7 @@
     <script src="{{asset('back-assets/assets/libs/moment/min/moment.min.js')}}"></script>
     <script src="{{asset('back-assets/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
     <script src="{{asset('back-assets/dist/js/pages/calendar/cal-init.js')}}"></script>
+    @yield('script')
     <script>
         $('#calendar').fullCalendar('option', 'height', 650);
 

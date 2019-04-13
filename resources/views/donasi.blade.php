@@ -42,6 +42,40 @@
                         </div>
                     </div>
                </div>
+
+               <div class="tabs">
+
+                <ul class="tabs-nav">
+                  <li><a href="#tab-1">Details</a></li>
+                  <li><a href="#tab-2">Laporan & Perkembangan</a></li>
+                </ul>
+
+                <div class="tabs-stage">
+                  <div id="tab-1">
+                    {!! $program->description !!}
+                  </div>
+
+                  <div id="tab-2">
+                    <ul id="accordion" class="accordion">
+                      @php
+                          $i = 1;
+                      @endphp
+                      @foreach ($devs as $dev)
+                      <li class="container">         
+                        <div class="link">Update #{{$i++}}<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                          <h2><strong>{{$dev->title}}</strong></h2><br><br>
+                          {!! $dev->description !!}
+                        </ul>
+                      </li> 
+                      @endforeach
+                      
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
 
             <div class="col-md-4 donate">
@@ -62,4 +96,54 @@
         </div>
     </section>
 
+@endsection
+
+
+@section('script')
+    <script>
+            // Show the first tab by default
+    $('.tabs-stage div').hide();
+    $('.tabs-stage div:first').show();
+    $('.tabs-nav li:first').addClass('tab-active');
+
+    // Change tab class and display content
+    $('.tabs-nav a').on('click', function(event){
+    event.preventDefault();
+    $('.tabs-nav li').removeClass('tab-active');
+    $(this).parent().addClass('tab-active');
+    $('.tabs-stage div').hide();
+    $($(this).attr('href')).show();
+    });
+
+    </script>
+
+    <script>
+    $(function() {
+	var Accordion = function(el, multiple) {
+		this.el = el || {};
+		this.multiple = multiple || false;
+
+		// Variables privadas
+		var links = this.el.find('.link');
+		// Evento
+		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+	}
+
+	Accordion.prototype.dropdown = function(e) {
+		var $el = e.data.el;
+			$this = $(this),
+			$next = $this.next();
+
+		$next.slideToggle();
+		$this.parent().toggleClass('open');
+
+		if (!e.data.multiple) {
+			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+		};
+	}	
+
+	var accordion = new Accordion($('#accordion'), false);
+});
+
+    </script>
 @endsection

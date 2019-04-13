@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Program;
+use App\Development;
 use App\DonationConfirmation;
 
 class frontController extends Controller
@@ -16,7 +17,8 @@ class frontController extends Controller
 
     public function donasi($id){
         $program = Program::find($id);
-        return view('donasi', ['program' => $program]);
+        $devs = Development::all()->where('program_id', $program->id);
+        return view('donasi', ['program' => $program, 'devs' => $devs]);
     }
 
     public function store(Request $request){

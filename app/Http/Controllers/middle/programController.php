@@ -11,7 +11,6 @@ use App\Development;
 class programController extends Controller
 {
 
-    
     public function createlaporanperkembangan($id){
         $program = Program::find($id);
         return view('middle.createdevelopment', ['program' => $program]);
