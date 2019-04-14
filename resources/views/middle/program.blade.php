@@ -35,7 +35,7 @@
 
             <div class="container mt-3">
             <p>{{$program->title}}</p><hr>  
-
+            <p>Kategori : <span class="badge badge-warning">Kemanusiaan</span></p><br>
             <table class="table table--bordered">
               <tbody>
                 <tr>

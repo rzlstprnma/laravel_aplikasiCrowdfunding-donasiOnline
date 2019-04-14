@@ -13,25 +13,29 @@
 Route::get('/', 'front\\frontController@index');
 
 // ========== middle =====
-
-Route::group(['middleware' => 'auth'], function () {
+    
+Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function () {
     Route::get('/laporanperkembangan/create/{id}', 'middle\\programController@createlaporanperkembangan');
     Route::post('/laporanperkembangan/store', 'middle\\programController@storelaporanperkembangan');
     Route::get('/middle', 'middle\\programController@middle');
     Route::get('/detailprogram/{id}', 'middle\\programController@detailprogram')->name('detail');
     Route::resource('program', 'middle\\programController');
+    Route::get('/verify/{id}', 'middle\\programController@verify');
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
-
-// ============ front ====
+// ============ front =====
 Route::get('/donasi/{id}', 'front\\frontController@donasi');
 Route::post('/donasi/store/{id}', 'front\\frontController@store');
 Route::get('/daftarprogram', 'front\\frontController@daftarprogram');
 Route::get('/konfirmasi', 'front\\frontController@konfirmasi');
 
+
+
+
+// ======= back =====
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
 Route::group(['prefix' => 'admin'], function () {
    Route::group(['middleware' => ['auth']], function () {
        Route::get('/dashboard', 'back\\backController@index');
@@ -42,4 +46,4 @@ Route::group(['prefix' => 'admin'], function () {
        Route::get('/selected/{id}', 'back\\backController@selected');
    });   
 });
-
+});

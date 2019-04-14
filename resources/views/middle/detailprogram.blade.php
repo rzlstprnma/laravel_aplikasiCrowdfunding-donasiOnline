@@ -16,7 +16,7 @@
 
 img{
     width: 100%;
-    height: 300px;
+    height: auto;
 }
 
 .tab__nav-item{
@@ -129,49 +129,97 @@ ul { list-style-type: none; }
                     </table>
                 </div>
             </div>
+            <div class="tab">
+                <div class="tab-header">
+                  <ul class="tab__navigation">
+                    <li class="tab__nav-item active" data-tab="#tab1-1">Deskripsi Program</li>
+                    <li class="tab__nav-item" data-tab="#tab1-2">Laporan & Perkembangan</li>
+                  </ul>
+                </div>
+
+                <div class="tab-body">
+                  <div class="tab__content" id="tab1-1" style="display: flex;">
+                    <p>{!! $program->description !!}</p>
+                  </div>
+
+                  <div class="tab__content" id="tab1-2" style="display: none;">
+                    <a href="/laporanperkembangan/create/{{$program->id}}">Buat Laporan Baru</a>
+
+
+                    <ul id="accordion" class="accordion">
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach ($devs as $dev)
+                        <li>
+                          <div class="link"><i class="fa fa-database"></i>UPDATE #{{$i}}<i class="fa fa-chevron-down"></i></div>
+                          <ul class="submenu">
+                              <div class="container">
+                            <p class="pt-2">{!! $dev->description !!}</p>
+                              </div>
+                        </ul>
+                        </li>
+                        @php
+                            $i++;
+                        @endphp
+                        @endforeach
+                    </ul>
+
+                  </div>
+                </div>
+            </div>
             </div>
 
             <div class="col-lg-6">
-                <div class="tab">
-                    <div class="tab-header">
-                      <ul class="tab__navigation">
-                        <li class="tab__nav-item active" data-tab="#tab1-1">Deskripsi Program</li>
-                        <li class="tab__nav-item" data-tab="#tab1-2">Laporan & Perkembangan</li>
+
+                <div class="box box--dark">
+                    <div class="box-header">
+                      <h3>Pendonasi</h3>
+                    </div>
+                    <div class="box-body pt-0 px-0 responsive">
+                      <table class="table--dark">
+                        <thead>
+                          <tr>
+                            <th>Nama Donatur</th>
+                            <th>Nominal Donasi</th>
+                            <th>Bukti Pembayaran</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($program->donatur as $donatur)
+                          <tr>
+                            <td>{{$donatur->nama_donatur}}</td>
+                            <td>{{$donatur->nominal_donasi}}</td>
+                            @if ($donatur->bukti_pembayaran == '')
+                                <td><p class="badge badge-green">Belum Konfirmasi</p></td>
+                            @else    
+                            <td>{{$donatur->bukti_pembayaran}}</td>
+                            @endif
+
+                            @if ($donatur->isVerified == 0)
+                                <td><a class="btn btn-light" href="/verify/{{$donatur->id}}">Verify</a></td>
+                            @else
+                                <td><p class="badge badge-primary">Diverifikasi</p></td>
+                            @endif
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="pagination-wrapper clearfix">
+                      <ul class="pagination float--right">
+                        <li class="pagination-item"><a class="active">1</a></li>
+                        <li class="pagination-item"> <a>2</a></li>
+                        <li class="pagination-item"> <a>3</a></li>
+                        <li class="pagination-item"> <a>Next</a></li>
                       </ul>
                     </div>
+                  </div>
 
-                    <div class="tab-body">
-                      <div class="tab__content" id="tab1-1" style="display: flex;">
-                        <p>{{$program->description}}</p>
-                      </div>
-
-                      <div class="tab__content" id="tab1-2" style="display: none;">
-                        <a href="/laporanperkembangan/create/{{$program->id}}">Buat Laporan Baru</a>
-
-
-                        <ul id="accordion" class="accordion">
-                            @php
-                                $i = 1;
-                            @endphp
-                            @foreach ($devs as $dev)
-                            <li>
-                              <div class="link"><i class="fa fa-database"></i>UPDATE #{{$i}}<i class="fa fa-chevron-down"></i></div>
-                              <ul class="submenu">
-                                  <div class="container">
-                                <p class="pt-2">{!! $dev->description !!}</p>
-                                  </div>
-                            </ul>
-                            </li>
-                            @php
-                                $i++;
-                            @endphp
-                            @endforeach
-                        </ul>
-
-                      </div>
-                    </div>
-                </div>
             </div>
+
+
 
             </div>
     </section>

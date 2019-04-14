@@ -12,4 +12,8 @@ class Program extends Model
         return asset('images/program-images/' . $this->photo);
     }
 
+    public function donatur()
+    {
+        return $this->hasMany('App\DonationConfirmation')->orderBy('isVerified');
+    }
 }

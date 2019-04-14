@@ -7,9 +7,17 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Program;
 use App\Development;
+use App\DonationConfirmation;
 
 class programController extends Controller
 {
+    public function verify($id){
+        $verify = DonationConfirmation::find($id);
+        if($verify->isVerified == 0){
+            $verify->update(['isVerified' => 1]);
+        }
+        return redirect()->back();
+    }
 
     public function createlaporanperkembangan($id){
         $program = Program::find($id);
