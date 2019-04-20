@@ -19,6 +19,15 @@ img{
     height: auto;
 }
 
+.tab-body{
+  text-align: justify !important;
+}
+
+.desc-program{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 .tab__nav-item{
     padding-left: 55px !important;
 }
@@ -100,7 +109,7 @@ ul { list-style-type: none; }
                 <img src="{{$program->getFoto()}}">
                 <div class="container mt-2">
                     <p>{{$program->title}}</p><br>
-                    <span class="badge badge-succes">{{$program->area_name}}</span><hr>
+                    <span>Kategori : </span><span class="badge badge-succes">{{$program->category->category_name}}</span><hr>
                     <span>{{$program->brief_explanation}}</span>
 
                     <table class="table table--bordered table--responsive">
@@ -119,7 +128,7 @@ ul { list-style-type: none; }
                             </tr>
                             <tr>
                                 <td>Donasi Terkumpul</td>
-                                <td>{{$program->donation_collected}}</td>
+                                <td>{{$program->donation_collected()}}</td>
                             </tr>
                             <tr>
                                 <td>Nomor Rekening Penampungan</td>
@@ -138,8 +147,8 @@ ul { list-style-type: none; }
                 </div>
 
                 <div class="tab-body">
-                  <div class="tab__content" id="tab1-1" style="display: flex;">
-                    <p>{!! $program->description !!}</p>
+                  <div class="tab__content" id="tab1-1">
+                    <p class="desc-program">{!! $program->description !!}</p>
                   </div>
 
                   <div class="tab__content" id="tab1-2" style="display: none;">

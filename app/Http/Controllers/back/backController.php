@@ -49,4 +49,9 @@ class backController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy($id){
+        Category::destroy($id);
+        return redirect()->back();
+    }
 }

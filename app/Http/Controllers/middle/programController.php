@@ -5,6 +5,7 @@ namespace App\Http\Controllers\middle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Category;
 use App\Program;
 use App\Development;
 use App\DonationConfirmation;
@@ -13,9 +14,8 @@ class programController extends Controller
 {
     public function verify($id){
         $verify = DonationConfirmation::find($id);
-        if($verify->isVerified == 0){
-            $verify->update(['isVerified' => 1]);
-        }
+        $verify->update(['isVerified' => 1]);
+
         return redirect()->back();
     }
 
@@ -47,7 +47,6 @@ class programController extends Controller
     public function index()
     {
         $programs = Program::all()->where('users_id', Auth::user()->id);
-
        return view('middle.program', ['programs' => $programs]);
     }
 
@@ -58,7 +57,8 @@ class programController extends Controller
      */
     public function create()
     {
-        return view('middle.create');
+        $categories = Category::all();
+        return view('middle.create', ['categories' => $categories]);
     }
 
     /**

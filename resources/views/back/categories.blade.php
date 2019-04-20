@@ -69,7 +69,7 @@
                         <td>{{$i++}}</td>
                         <td>{{$category->category_name}}</td>
                         <td>
-                            <a class="btn btn-danger" href="/delete/{{$category->id}}">Hapus</a>
+                            <a class="btn btn-danger" href="/admin/delete/{{$category->id}}">Hapus</a>
                         </td>
                     </tr>
                     @endforeach

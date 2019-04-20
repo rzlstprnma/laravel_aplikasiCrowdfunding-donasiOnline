@@ -45,9 +45,14 @@ textarea{
 
         <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
 
-        <div class="form-group label--floating"><input type="text" name="title"><label>Judul Program</label></div>
+        <div class="form-group"><label>Kategori</label><select name="category_id">
+            <option disabled selected>-- Pilih Kategori --</option>
+            @foreach ($categories as $category)
+            <option value="{{$category->id}}">{{$category->category_name}}</option>
+            @endforeach
+          </select></div>
 
-        <div class="form-group label--floating"><input type="text" name="area_name"><label>Nama Wilayah</label></div>
+        <div class="form-group label--floating"><input type="text" name="title"><label>Judul Program</label></div>
 
         <div class="file-upload-wrapper" data-text="Tambahkan Gambar">
           <input type="file" name="photo" class="file-upload-field">

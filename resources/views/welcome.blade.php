@@ -55,7 +55,7 @@
                             <img src="{{$program->getFoto()}}" alt="Program Image">
 
                             <div class="container mt-3">
-                                    <p class="title">{{$program->title}}</p><span>
+                                    <p class="title">{{$program->title}}</p>
                                     <div class="brief">
                                         <p>{{$program->brief_explanation}}</p>
                                     </div>
@@ -102,34 +102,34 @@
     
             <div class="content">
                     <div class="row">
-                        @foreach ($programs as $program)
+                        @foreach ($programsNew as $newProgram)
                         <div class="col-lg-4 pl-4">
-                            <a href="/donasi/{{$program->id}}">
+                            <a href="/donasi/{{$newProgram->id}}">
                             <div class="card">
-                                <img src="{{$program->getFoto()}}" alt="Program Image">
+                                <img src="{{$newProgram->getFoto()}}" alt="Program Image">
     
                                 <div class="container mt-3">
-                                        <p class="title">{{$program->title}}</p><span>
+                                        <p class="title">{{$newProgram->title}}</p><span>
                                         <div class="brief">
-                                            <p>{{$program->brief_explanation}}</p>
+                                            <p>{{$newProgram->brief_explanation}}</p>
                                         </div>
                                 </div>
                                 <div class="programs-info">
                                         <div class="waktu">
                                             <div class="container">
                                             <span>Kategori</span><p>Kemanusiaan</p>
-                                            <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
+                                            <span>Berakhir Pada</span><p>{{$newProgram->time_is_up}}</p>
                                             </div>
                                         </div>
     
                                         <div class="dana">
                                             <div class="container">
-                                            <span>Terkumpul</span><p>@if ($program->donation_collected == 0)
+                                            <span>Terkumpul</span><p>@if ($newProgram->donation_collected == 0)
                                                 0
                                             @else
-                                            {{$program->donation_collected}}
+                                            {{$newProgram->donation_collected}}
                                             @endif</p>
-                                            <span>Target</span><p>{{$program->donation_target}}</p>
+                                            <span>Target</span><p>{{$newProgram->donation_target}}</p>
                                             </div>
                                         </div>
                                         </div>

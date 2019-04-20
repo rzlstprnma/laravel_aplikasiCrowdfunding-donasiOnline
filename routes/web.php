@@ -27,8 +27,10 @@ Auth::routes();
 
 // ============ front =====
 Route::get('/donasi/{id}', 'front\\frontController@donasi');
-Route::post('/donasi/store/{id}', 'front\\frontController@store');
+Route::get('/donasi/{id}/donasi', 'front\\frontController@donasicreate');
+Route::post('/donasi/{id}/donasi/store', 'front\\frontController@donasistore');
 Route::get('/daftarprogram', 'front\\frontController@daftarprogram');
+Route::get('/program/category/{id}', 'front\\frontController@programcategory');
 Route::get('/konfirmasi', 'front\\frontController@konfirmasi');
 
 
@@ -36,14 +38,15 @@ Route::get('/konfirmasi', 'front\\frontController@konfirmasi');
 
 // ======= back =====
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
-Route::group(['prefix' => 'admin'], function () {
-   Route::group(['middleware' => ['auth']], function () {
-       Route::get('/dashboard', 'back\\backController@index');
-       Route::get('/program', 'back\\backController@program');
-       Route::get('/categories', 'back\\backController@categories');
-       Route::post('/categories/create', 'back\\backController@categoriescreate');
-       Route::get('/published/{id}', 'back\\backController@published');
-       Route::get('/selected/{id}', 'back\\backController@selected');
-   });   
-});
+    Route::group(['prefix' => 'admin'], function () {
+        Route::group(['middleware' => ['auth']], function () {
+            Route::get('/dashboard', 'back\\backController@index');
+            Route::get('/program', 'back\\backController@program');
+            Route::get('/categories', 'back\\backController@categories');
+            Route::post('/categories/create', 'back\\backController@categoriescreate');
+            Route::get('/published/{id}', 'back\\backController@published');
+            Route::get('/selected/{id}', 'back\\backController@selected');
+            Route::get('/delete/{id}', 'back\\backController@destroy');
+        });   
+    });
 });

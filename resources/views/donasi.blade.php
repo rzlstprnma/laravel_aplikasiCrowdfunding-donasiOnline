@@ -9,141 +9,94 @@
 @endsection
 
 @section('content')
+<div class="container">
+<div class="row">
+  <div class="col-md-7">  
+    <h2>{{$program->title}}</h2>
+    <div class="card mt-4">
+      <img src="{{$program->getFoto()}}" alt="Program Image">
+    </div>
+
+    <div class="m-4">
+        <span>{{$program->brief_explanation}}</span>
+    </div>
+  </div>
+  <div class="col-md-5 container">
+    <div class="card-donasi">
+      <span>{{$program->brief_explanation}}</span><br>
+      <a href="/donasi/{{$program->id}}/donasi" class="btn btn-donasi mt-4">Donasi Sekarang</a>
+    </div><br>
+    <h4>Donatur</h4>
+    <table class="table table-bordered">
+      <tbody>
+        @foreach ($program->donatur as $donatur)
+        <tr>
+          <th>{{$donatur->nama_donatur}}</th>
+          <th>{{$donatur->nominal_donasi}}</th>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="row">
+  <div class="col-md-7 col-12">
+    <div class="main">
+      <input id="tab1" class="input" type="radio" name="tabs" checked>
+      <label class="label" for="tab1">Detail</label>
     
-    <section class="section-1">
-        <div class="row m-4">
-            <div class="col-md-8">
-               <div class="card">
-                   <img src="{{$program->getFoto()}}" alt="Program Image">
-
-                   <div class="container mt-3">
-                        <p class="title">{{$program->title}}</p>
-                        <div class="brief">
-                            <p>{{$program->brief_explanation}}</p>
-                        </div>
-                    </div>
-                    <div class="program-info">
-                        <div class="waktu">
-                            <div class="container">
-                            <span>Kategori</span><p>Kemanusiaan</p>
-                            <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
-                            </div>
-                        </div>
-
-                        <div class="dana">
-                            <div class="container">
-                            <span>Terkumpul</span><p class="collected">@if ($program->donation_collected == 0)
-                                0
-                            @else
-                            {{$program->donation_collected}}
-                            @endif</p>
-                            <span>Target</span><p>{{$program->donation_target}}</p>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-
-               <div class="tabs">
-
-                <ul class="tabs-nav">
-                  <li><a href="#tab-1">Details</a></li>
-                  <li><a href="#tab-2">Laporan & Perkembangan</a></li>
-                </ul>
-
-                <div class="tabs-stage">
-                  <div id="tab-1">
-                    {!! $program->description !!}
-                  </div>
-
-                  <div id="tab-2">
-                    <ul id="accordion" class="accordion">
-                      @php
-                          $i = 1;
-                      @endphp
-                      @foreach ($devs as $dev)
-                      <li class="container">         
-                        <div class="link">Update #{{$i++}}<i class="fa fa-chevron-down"></i></div>
-                        <ul class="submenu">
-                          <h2><strong>{{$dev->title}}</strong></h2><br><br>
-                          {!! $dev->description !!}
-                        </ul>
-                      </li> 
-                      @endforeach
-                      
-                    </ul>
+      <input id="tab2" class="input" type="radio" name="tabs">
+      <label class="label" for="tab2">Laporan Perkembangan</label>
+    
+      <section id="content1">
+        {!! $program->description !!}
+      </section>
+    
+      <section id="content2">
+        <div id="accordion">
+          @php
+              $i = 1;
+          @endphp
+          @foreach ($devs as $dev)
+          <div class="card mt-2">
+            <div class="card-header" id="heading-3">
+                  <h5 class="mb-0">
+                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-{{$dev->id}}" aria-expanded="false" aria-controls="collapse-{{$dev->id}}">
+                        <span>UPDATE #{{$i++}}</span>
+                    </a>
+                  </h5>
+                </div>
+                <div id="collapse-{{$dev->id}}" class="collapse" data-parent="#accordion" aria-labelledby="heading-3">
+                  <div class="card-body">
+                    <h2>{{$dev->title}}</h2>
+                    <p>{{$dev->created_at->toDateString()}}</p>
+                    <br><br>
+                    {!! $dev->description !!}
                   </div>
                 </div>
-
               </div>
-
+              @endforeach
             </div>
+      </section>
+    </div>
 
-            <div class="col-md-4 donate">
-                <p class="mt-3">{{$program->brief_explanation}}</p>
 
-                <form action="/donasi/store/{{$program->id}}" class="fixed" method="post">
-                {{ csrf_field() }}
-
-                <input type="hidden" name="program_id" value="{{$program->id}}">
-                <div class="form-group">
-                    <label>Masukan Nominal Donasi</label>
-                    <input type="number" class="form-control" min="10000" step="1000" name="nominal_donasi">
-                </div>
-
-                <button class="btn btn-donasi">Donasi Sekarang</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+  </div>
+  </div>
+  <div class="col-md-7 col-12"></div>
+</div>
+</div>
 @endsection
-
 
 @section('script')
     <script>
-            // Show the first tab by default
-    $('.tabs-stage div').hide();
-    $('.tabs-stage div:first').show();
-    $('.tabs-nav li:first').addClass('tab-active');
-
-    // Change tab class and display content
-    $('.tabs-nav a').on('click', function(event){
-    event.preventDefault();
-    $('.tabs-nav li').removeClass('tab-active');
-    $(this).parent().addClass('tab-active');
-    $('.tabs-stage div').hide();
-    $($(this).attr('href')).show();
-    });
-
-    </script>
-
-    <script>
-    $(function() {
-	var Accordion = function(el, multiple) {
-		this.el = el || {};
-		this.multiple = multiple || false;
-
-		// Variables privadas
-		var links = this.el.find('.link');
-		// Evento
-		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-	}
-
-	Accordion.prototype.dropdown = function(e) {
-		var $el = e.data.el;
-			$this = $(this),
-			$next = $this.next();
-
-		$next.slideToggle();
-		$this.parent().toggleClass('open');
-
-		if (!e.data.multiple) {
-			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-		};
-	}	
-
-	var accordion = new Accordion($('#accordion'), false);
-});
-
+    $(window).on('scroll',function(){
+      if($(window).scrollTop()){
+        $('.card-donasi').addClass('card-fixed');
+      }else {
+        $('.card-donasi').removeClass('card-fixed');
+      }
+  })
     </script>
 @endsection
