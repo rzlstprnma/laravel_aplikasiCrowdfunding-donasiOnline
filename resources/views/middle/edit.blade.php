@@ -59,12 +59,22 @@ textarea{
       <form action="{{route('program.update', $program->id)}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
+
+        <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
+        <div class="form-group"><label>Kategori</label>
+          <select name="category_id">
+          <option disabled selected>-- Pilih Kategori --</option>
+          @foreach ($categories as $category)
+          <option value="{{$category->id}}" @if ($program->category_id == $category->id)
+              {{"selected"}}
+          @endif>{{$category->category_name}}</option>
+          @endforeach
+        </select></div>
+
         <div class="form-group label--floating"><input type="text" name="title" value="{{$program->title}}"><label>Judul Program</label></div>
 
-        <div class="form-group label--floating"><input type="text" name="area_name" value="{{$program->area_name}}"><label>Nama Wilayah</label></div>
-
         <div class="file-upload-wrapper" data-text="Tambahkan Gambar">
-          <input type="file" name="photo" class="file-upload-field">
+          <input type="file" name="photo" value="{{$program->photo}}" class="file-upload-field">
         </div>
         <br>
         <div class="image">
@@ -151,7 +161,7 @@ textarea{
 <script>
 
   $("form").on("change", ".file-upload-field", function(){ 
-    $(this).parent(".file-upload-wrapper").attr("data-text",         $(this).val().replace(/.*(\/|\\)/, '') );
+    $(this).parent(".file-upload-wrapper").attr("data-text",$(this).val().replace(/.*(\/|\\)/, '') );
 });
 </script>
 @endsection

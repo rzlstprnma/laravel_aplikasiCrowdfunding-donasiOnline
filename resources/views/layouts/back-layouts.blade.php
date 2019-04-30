@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('back-assets/assets/images/favicon.png')}}">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
+    <title>@yield('title')</title>
     <!-- chartist CSS -->
     <link href="{{asset('back-assets/assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <link href="{{asset('back-assets/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css')}}" rel="stylesheet">
@@ -58,17 +58,17 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{{asset('back-assets/assets/images/logos/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                            <span class="light-logo">ADMIN</span>
                             <!-- Light Logo icon -->
-                            <img src="{{asset('back-assets/assets/images/logos/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
+                            <span class="dark-logo">ADMIN</span>
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                              <!-- dark Logo text -->
-                             <img src="{{asset('back-assets/assets/images/logos/logo-text.png')}}" alt="homepage" class="dark-logo" />
+                             <span class="light-logo">{{Auth::user()->name}}</span>
                              <!-- Light Logo text -->    
-                             <img src="{{asset('back-asset/assets/images/logos/logo-light-text.png')}}" class="light-logo" alt="homepage" />
+                             <span class="dark-logo">{{Auth::user()->name}}</span>
                         </span>
                     </a>
                     <div class="d-none d-md-block text-center">
@@ -102,17 +102,17 @@
                         <b class="logo-icon">
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon -->
-                                <img src="{{asset('back-assets/assets/images/logos/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                                <span class="dark-logo" >ADMIN</span>
                                 <!-- Light Logo icon -->
-                                <img src="{{asset('back-assets/assets/images/logos/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
+                                <span class="light-logo" >ADMIN</span>
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
                                  <!-- dark Logo text -->
-                                 <img src="{{asset('back-assets/assets/images/logos/logo-text.png')}}" alt="homepage" class="dark-logo" />
+                                 <span class="dark-logo" >{{Auth::user()->name}}</span>
                                  <!-- Light Logo text -->    
-                                 <img src="{{asset('back-assets/assets/images/logos/logo-light-text.png')}}" class="light-logo" alt="homepage">
+                                 <span class="light-logo">{{Auth::user()->name}}</span>
                             </span>
                                 </a>
                         </li>
@@ -120,7 +120,7 @@
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
-                    <ul class="navbar-nav float-right">>
+                    <ul class="navbar-nav float-right">
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -140,7 +140,13 @@
                                 </div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user mr-1 ml-1"></i> My Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-power-off mr-1 ml-1"></i><span>Log out</span></a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                         <!-- ============================================================== -->

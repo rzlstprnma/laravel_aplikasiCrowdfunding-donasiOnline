@@ -6,9 +6,9 @@
 }
 
 .btn-galang {
-  background-color: #D9EF81;
+  background-color: #0af;
   border-radius: 0;
-  color: #131E77;
+  color: #fff;
 }
 
 .aksi p {
@@ -20,8 +20,8 @@
   text-align: center;
   width: 100%;
   height: 120px;
-  background-color: rgba(0, 0, 0, 0.4);
-  margin-top: -120px;
+  background-color: #0af;
+  margin-top: -110px;
   position: absolute;
   color: #fff;
   padding: 25px;
@@ -33,7 +33,7 @@
 
 .info p {
   top: -20px;
-  font-size: 17px;
+  font-size: 12px;
 }
 
 .jumbotron-fluid {
@@ -44,8 +44,6 @@
   position: relative;
   margin-top: -80px;
   height: 500px;
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
 }
 
 .jumbotron-fluid::after {
@@ -54,6 +52,9 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
   bottom: 0;
 }
 
@@ -74,14 +75,15 @@ section {
 .section-2 .header {
   font-size: 23px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #333 !important;
+  color: #0af !important;
+  text-shadow: 1px 0 2px rgba(3, 3, 3, 0.5);
   text-align: center !important;
 }
 
 .section-2 .header hr {
   margin-top: 5px !important;
   width: 300px;
-  border: 2px solid #333;
+  border: 1px solid #0af;
 }
 
 .card {
@@ -92,6 +94,8 @@ section {
   position: relative;
   display: inline-block;
   vertical-align: top;
+  -webkit-transition: .5s ease !important;
+  transition: .5s ease !important;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -114,8 +118,8 @@ section {
 .card img {
   width: 100%;
   height: 210px;
-  -webkit-transition: .5s ease-out;
-  transition: .5s ease-out;
+  -webkit-transition: .09s ease;
+  transition: .09s ease;
 }
 
 .card img:hover {
@@ -167,9 +171,9 @@ section {
 
 .btn-more {
   margin: 20px 70px;
-  background-color: #D9EF81;
+  background-color: #0af;
   border-radius: 0 !important;
-  color: #09264A;
+  color: #fff !important;
 }
 
 footer {
@@ -227,7 +231,8 @@ footer ul li a {
     position: absolute;
   }
   .btn-galang {
-    background-color: #D9EF81;
+    background-color: #0af;
+    color: #fff !important;
     border-radius: 0;
   }
   .aksi p {
@@ -238,8 +243,8 @@ footer ul li a {
     text-align: center;
     width: 100%;
     height: 120px;
-    background-color: rgba(0, 0, 0, 0.4);
-    margin-top: -120px;
+    background-color: #0af;
+    margin-top: -110px;
     position: absolute;
     color: #fff;
     padding: 25px;
@@ -257,12 +262,10 @@ footer ul li a {
     background: url("../../images/4.-Membantu-orang-lain-dari-Ummi-Online (1).jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: center;
     position: relative;
     margin-top: -80px;
     height: 500px;
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
   }
   .jumbotron-fluid::after {
     content: '';
@@ -270,6 +273,9 @@ footer ul li a {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     bottom: 0;
   }
   section {
@@ -286,13 +292,15 @@ footer ul li a {
   .section-2 .header {
     font-size: 23px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #333 !important;
+    color: #0af !important;
+    text-shadow: 1px 0 2px rgba(3, 3, 3, 0.5);
     text-align: center !important;
   }
   .section-2 .header hr {
     margin-top: 5px !important;
     width: 300px;
-    border: 2px solid #333;
+    border: 1px solid #0af;
+    text-shadow: 2px 0 3px #030303;
   }
   .card {
     margin-top: 30px !important;
@@ -337,37 +345,9 @@ footer ul li a {
   }
   .btn-more {
     margin: 20px 70px;
-    background-color: #D9EF81;
+    background-color: #0af;
     border-radius: 0 !important;
-    color: #09264A;
-  }
-  footer {
-    width: 100%;
-    height: auto;
-    background-color: #ECECEC;
-    padding-bottom: 40px;
-  }
-  footer .col-md-6 {
-    font-size: 16px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 200 !important;
-    color: #333 !important;
-  }
-  footer hr {
-    margin-top: 0 !important;
-    border: .6px solid #333;
-  }
-  footer ul li {
-    font-size: 13px;
-    list-style: none;
-    margin-left: -20px !important;
-  }
-  footer ul li a {
-    text-decoration: none !important;
-    color: #333;
-  }
-  .copyright {
-    font-size: 14px;
+    color: #fff !important;
   }
 }
 /*# sourceMappingURL=index.css.map */

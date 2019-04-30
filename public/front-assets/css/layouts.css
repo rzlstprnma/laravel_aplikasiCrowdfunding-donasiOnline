@@ -13,6 +13,11 @@ header {
   padding-bottom: 80px;
 }
 
+input:focus {
+  outline: 0;
+  border-color: #0af !important;
+}
+
 .nav-bar {
   width: 100%;
   position: fixed;
@@ -22,6 +27,30 @@ header {
   transition: .5s;
   z-index: 1;
   top: 0;
+}
+
+.nav-bar .btn-admin {
+  line-height: 0;
+  height: 40px;
+  margin: 13px;
+  color: #fff !important;
+  background-color: #0af;
+}
+
+.nav-bar .btn-dashboard {
+  line-height: 0;
+  height: 40px;
+  margin: 13px;
+  color: #fff !important;
+  background-color: #0af;
+}
+
+.nav-bar .btn-logout {
+  line-height: 0;
+  height: 40px;
+  margin: 13px;
+  color: #fff !important;
+  background-color: red;
 }
 
 .nav-bar.black {
@@ -35,7 +64,6 @@ header {
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow: hidden;
 }
 
 .nav-bar li a {
@@ -46,7 +74,8 @@ header {
 }
 
 .dark {
-  background-color: #000;
+  text-shadow: 1px 0 2px rgba(3, 3, 3, 0.5);
+  background-color: #0af;
 }
 
 .gelap {
@@ -163,7 +192,7 @@ header {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   header {
     padding-bottom: 80px;
   }
@@ -184,7 +213,7 @@ header {
   .nav-bar li a {
     color: #333 !important;
     display: block;
-    padding: 20px 20px;
+    padding: 20px 10px;
     text-decoration: none;
   }
   .nav-bar li a:hover,

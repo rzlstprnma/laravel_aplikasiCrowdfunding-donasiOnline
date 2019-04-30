@@ -16,12 +16,11 @@ class CreateProgramsTable extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('users_id');
+            $table->integer('category_id');
             $table->string('title', 100);
-            $table->string('area_name',100);
             $table->string('photo', 200);
             $table->string('brief_explanation', 200);
             $table->integer('donation_target');
-            $table->timestamp('start_time');
             $table->date('time_is_up');
             $table->string('shelter_account_number', 45);
             $table->integer('donation_collected');

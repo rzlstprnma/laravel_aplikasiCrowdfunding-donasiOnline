@@ -16,7 +16,7 @@ body{
 
 .logo{
     color: #fff;
-    background-color: #000;
+    background-color: #0af;
 }
 
 .nav-bar li a{
@@ -45,6 +45,7 @@ img{
     margin-top: 25px;
     background: #fff;
     border: 1px solid #eaeaea;
+    padding-bottom: 20px;
 }
 
 .btn-donasi{
@@ -67,7 +68,7 @@ img{
                 <div class="container">
                     <div class="container">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-3 mt-2">
                             <img src="{{$program->getFoto()}}" alt="ProgramImages">
                         </div>
 
@@ -80,44 +81,64 @@ img{
                 </div>
             </div>
 
-        <form action="/donasi/{{$program->id}}/donasi/store" method="post">
-                {{ csrf_field() }}
-            <div class="form-donatur">
-                <div class="container mt-4">
-                    <div class="container">
-                    
-                        <label class="sr-only" for="nominal">Nominal donasi</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Rp</div>
+            <form action="/donasi/{{$program->id}}/donasi/store" method="post">
+                    {{ csrf_field() }}
+                <div class="form-donatur">
+                    <div class="container mt-4">
+                        <div class="container">
+                        
+                            <label class="sr-only" for="nominal">Nominal donasi</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
+                                <input type="number" name="nominal_donasi" min="1000" class="form-control" id="nominal" placeholder="Nominal Donasi">
                             </div>
-                            <input type="number" name="nominal_donasi" min="1000" class="form-control" id="nominal" placeholder="Nominal Donasi">
-                        </div>
-                        <input type="hidden" name="program_id" value="{{$program->id}}">
-                        <span><a href="/login">Masuk</a> atau lengkapi data dibawah ini</span>
-                        <div class="form-group">
-                            <input type="text" name="nama_donatur" class="form-control" placeholder="Nama Lengkap">
+                            <input type="hidden" name="program_id" value="{{$program->id}}">
 
-                            <div class="form-check">
-                                <input id="check" type="checkbox" name="nama_donatur" class="form-check-input" value="Hamba Allah">
-                                <label for="check" class="form-check-label">Sembunyikan Nama Saya (Hamba Allah)</label>
-                            </div>
-
+                            @if (Auth::check())
+                            <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Email" class="form-control">
+                                <label>Nama Lengkap</label>
+                                <input class="form-control" type="text" readonly name="nama_donatur" value="{{Auth::user()->name}}">
+
+                                <div class="form-check">
+                                        <input id="check" type="checkbox" name="nama_donatur" class="form-check-input" value="Hamba Allah">
+                                        <label for="check" class="form-check-label">Sembunyikan Nama Saya (Hamba Allah)</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" readonly name="email" value="{{Auth::user()->email}}">
                             </div>
 
+                            @else    
+                            <span><a href="/login">Masuk</a> atau lengkapi data dibawah ini</span>
                             <div class="form-group">
-                                <textarea name="dukungan" rows="6" class="form-control" placeholder="Tulis Dukungan atau Do'a untuk Penggalangan Dana ini. Contoh: Cepet Sembuh, ya!"></textarea>
+                                <input type="text" name="nama_donatur" class="form-control" placeholder="Nama Lengkap">
+    
+                                <div class="form-check">
+                                    <input id="check" type="checkbox" name="nama_donatur" class="form-check-input" value="Hamba Allah">
+                                    <label for="check" class="form-check-label">Sembunyikan Nama Saya (Hamba Allah)</label>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Email" class="form-control">
+                                </div>
+                            @endif
+    
+                                <div class="form-group">
+                                    <textarea name="dukungan" rows="6" class="form-control" placeholder="Tulis Dukungan atau Do'a untuk Penggalangan Dana ini. Contoh: Cepet Sembuh, ya!"></textarea>
+                                </div>
                             </div>
+                            <button class="btn btn-donasi mt-4" type="submit">Donasi Sekarang</button>
                         </div>
                     </div>
                 </div>
-            </div>
+                
+    
+            </form>
+            
 
-                <button class="btn btn-donasi mt-4" type="submit">Donasi Sekarang</button>
-
-        </form>
 
         </div>
     </div>

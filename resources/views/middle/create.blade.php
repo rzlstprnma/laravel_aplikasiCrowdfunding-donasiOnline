@@ -66,7 +66,7 @@ textarea{
         @if ($errors->has('donation_target'))
              <span class="invalid-feedback" role="alert">
                 <div class="alert alert--dismissible">
-                    <p><span>Target Donasi Harus Berupa Nomor</span></p>
+                    <p><span>Target Donasi Harus Berupa Angka</span></p>
                     <div class="alert-dismiss"><button class="btn btn-icon"><i class="la la-times"></i></button></div>
                 </div>
              </span>

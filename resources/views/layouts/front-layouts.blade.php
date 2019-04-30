@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 
   <meta charset="UTF-8">
@@ -25,22 +23,21 @@
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
+          
+          <li><a class="nav-link" href="/daftarprogram">Donasi</a></li>          
+          <li><a class="nav-link" href="/konfirmasi">Konfirmasi Pendonasian</a></li>
           @if (Auth::check())
             @if (Auth::user()->role == 1)
-              <li><a href="/admin/dashboard" class="nav-link">Kelola Admin</a></li> 
+              <li><a href="/admin/dashboard" class="btn-admin nav-link">Kelola Admin</a></li> 
             @else
-              <li><a href="/middle" class="nav-link">Galang Dana</a></li>
+              <li><a href="/middle" class="btn-dashboard nav-link">Dashboard</a></li>
             @endif          
           @endif
-          
-
-          <li><a class="nav-link" href="/daftarprogram">Donasi</a></li>
-          <li><a class="nav-link" href="/konfirmasi">Konfirmasi Pendonasian</a></li>
           @if (!Auth::check())
           <li><a class="nav-link" href="/login">Login</a></li>
           <li><a class="nav-link" href="/register">Daftar</a></li> 
           @else
-          <li><a href="{{ route('logout') }}"
+          <li><a class="btn-logout" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();" class="nav-link">Logout</a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -58,7 +55,6 @@
   @yield('content')
 
 
-
   <script src="{{asset('front-assets/js/jquery.js')}}"></script>
   <script src="{{asset('front-assets/js/bootstrap.min.js')}}"></script>
  @yield('script')
@@ -68,6 +64,7 @@
       $('.nav-bar').addClass('black');
       $('.nav-link').addClass('gelap')
       $('.logo').addClass('dark')
+      $('.prog').addClass('bosh')
     }else {
       $('.nav-bar').removeClass('black');
       $('.nav-link').removeClass('gelap');

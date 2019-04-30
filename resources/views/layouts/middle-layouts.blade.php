@@ -16,7 +16,7 @@
 <body>
   <div class="sidebar">
     <div class="sidebar-header">
-      <p class="brand">Pugna</p>
+      <span class="brand"><small>{{Auth::user()->name}}</small></span>
       <div class="sidebar-control"><i class="la la-navicon"></i></div>
     </div>
     <div class="sidebar-wrapper">
@@ -25,10 +25,14 @@
         <li class="has-children">
         <a href="/middle"><i class="la la-dashboard"></i><span>Dashboards</span></a>
         </li>
+
+        <li class="has-children">
+        <a href="/donasi"><i class="la la-dashboard"></i><span>Donasi</span></a>
+        </li>
          
-        <li class="has-children"><a href="/laporanperkembangan"><i class="la la-dashboard"></i><span>Laporan & Perkembangan</span></a></li>
-        
-        <li class="has-children"><a href="{{route('program.index')}}"><i class="la la-pencil"></i><span>Kelola Program</span></a></li>
+        <li class="has-children"><a href="{{route('program.create')}}"><i class="la la-dashboard"></i><span>Buat Program Baru</span></a></li>
+
+        <li class="has-children"><a href="{{route('program.index')}}"><i class="la la-pencil"></i><span>Daftar Program</span></a></li>
 
       </ul>
     </div>
@@ -36,18 +40,18 @@
   <div class="main-content">
     <div class="header">
       <div class="left">
-        <p>@yield('title')</p>
+        <span><strong>@yield('title')</strong></span>
       </div>
       <ul class="right">
         <li class="header-user dropdown ml-4 mr-3"><a class="user-photo trigger-dropdown"><img class="user-img" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/101e1fb9-0b2e-4f2d-acfb-a777dc48f629/d4sn4w7-2a5d1fdf-2af2-408a-9300-08f28cd12951.png" /></a>
           <div class="dropdown-box with-header">
             <div class="dropdown-header"><img class="user-img user-img--lg" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/101e1fb9-0b2e-4f2d-acfb-a777dc48f629/d4sn4w7-2a5d1fdf-2af2-408a-9300-08f28cd12951.png" />
               <div class="user-info">
-                <h3>Pugna</h3><span class="helper-text">pugna@gmail.com</span>
+                <h3>{{Auth::user()->name}}</h3><span class="helper-text">{{Auth::user()->email}}</span>
               </div>
             </div>
             <ul class="dropdown-body">
-              <li><a href="https://github.com/aljazari-studio" target="_blank"><i class="la la-user"></i><span>My profile</span></a></li>
+              <li><a href="https://github.com/rzlstprnma" target="_blank"><i class="la la-user"></i><span>My profile</span></a></li>
               <li><a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">

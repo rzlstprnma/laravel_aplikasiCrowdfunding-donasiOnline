@@ -12,17 +12,12 @@
     margin-top: -80px;
 }
 .nav-bar{
-    background-color: #fff;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    display: none;
 }
 
-.logo{
-    color: #fff;
-    background-color: #000;
-}
-
-.nav-bar li a{
-    color: #333;
+.auth-box{
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.30) !important;
 }
 
 </style>
@@ -31,7 +26,7 @@
 @section('content')
 <div class="main-wrapper">
 
-    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url({{asset('back-assets/assets/images/big/auth-bg.jpg')}}) no-repeat center center;">
+    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center">
             <div class="auth-box">
                 <div id="loginform">
                     <div class="head-title">
@@ -51,7 +46,7 @@
 
                                     @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>Email dan Password tidak cocok</strong>
                                     </span>
                                     @endif
                             </div>
@@ -92,7 +87,7 @@
 
                                 <div class="form-group mt-2">
                                     <div class="col-sm-12 text-center">
-                                        Don't have an account? <a href="authentication-register1.html" class="text-info ml-1"><b>Sign Up</b></a>
+                                        Belum Punya Akun? <a href="/register" class="text-info ml-1"><b>Sign Up</b></a>
                                     </div>
                                 </div>
                             </form>

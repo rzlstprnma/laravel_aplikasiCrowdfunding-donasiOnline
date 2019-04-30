@@ -16,7 +16,7 @@ class CreateDevelopmentsTable extends Migration
         Schema::create('developments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('program_id');
-            $table->string('judul', 120);
+            $table->string('title', 120);
             $table->text('description');
             $table->timestamps();
         });

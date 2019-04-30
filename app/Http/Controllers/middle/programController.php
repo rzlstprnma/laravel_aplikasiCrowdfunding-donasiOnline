@@ -12,6 +12,31 @@ use App\DonationConfirmation;
 
 class programController extends Controller
 {
+    public function donasikonfir(Request $request, $id){
+        $konfirmasi = DonationConfirmation::find($id);
+        $collected = DonationConfirmation::where('program_id', $konfirmasi->program_id)->sum('nominal_donasi');
+        $program = Program::where('id', $konfirmasi->program_id)->first();
+        if($request->file('bukti_pembayaran')){
+            $file       = $request->file('bukti_pembayaran');
+            $fileName   = $file->getClientOriginalName();
+            $request->file('bukti_pembayaran')->move("images/bukti_pembayaran/", $fileName);
+            $bukti = $konfirmasi->bukti_pembayaran = $fileName;
+            $konfirmasi->update(['isVerified' => 1, 'bukti_pembayaran' => $bukti]);
+        }
+        $program->update(['donation_collected' => $collected]);
+
+        return redirect()->back();
+    }
+
+    public function donasi(){
+        $info = DonationConfirmation::where('users_id', Auth::user()->id)->count();
+        $donasiCount = DonationConfirmation::where('users_id', Auth::user()->id)->where('isVerified', 1)->count(); 
+        $konfirCount = DonationConfirmation::where('users_id', Auth::user()->id)->where('isVerified', 0)->count();
+        $donasi = DonationConfirmation::where('users_id', Auth::user()->id)->where('isVerified', 1)->get(); 
+        $konfir = DonationConfirmation::where('users_id', Auth::user()->id)->where('isVerified', 0)->get();
+        return view('middle.donasi', compact('konfir', 'donasi', 'info', 'donasiCount', 'konfirCount'));
+    }
+
     public function verify($id){
         $verify = DonationConfirmation::find($id);
         $verify->update(['isVerified' => 1]);
@@ -32,12 +57,18 @@ class programController extends Controller
     public function detailprogram($id){
         $program = Program::find($id);
         $devs = Development::all()->where('program_id', $program->id);
-
-        return view('middle.detailprogram', ['program' => $program], ['devs' => $devs]);
+        $donatur = DonationConfirmation::where('program_id', $id)->count();
+        return view('middle.detailprogram', compact('program', 'devs', 'donatur'));
     }
 
     public function middle(){
-        return view('middle.index');
+        $program = Program::where('users_id', Auth::user()->id)->count();
+        $programPublished = Program::where('users_id', Auth::user()->id)->where('isPublished', 1)->count();
+        $programNotPublished = Program::where('users_id', Auth::user()->id)->where('isPublished', 0)->count();
+        $donasi = DonationConfirmation::where('users_id', Auth::user()->id)->count();
+        $konfir = DonationConfirmation::where('users_id', Auth::user()->id)->where('isVerified', 0)->count(); 
+        
+        return view('middle.index', compact('program', 'programPublished', 'programNotPublished', 'donasi', 'konfir'));
     }
     /**
      * Display a listing of the resource.
@@ -46,8 +77,10 @@ class programController extends Controller
      */
     public function index()
     {
-        $programs = Program::all()->where('users_id', Auth::user()->id);
-       return view('middle.program', ['programs' => $programs]);
+        $info = Program::where('users_id', Auth::user()->id)->count();
+        $programs = Program::where('users_id', Auth::user()->id)->orderBy('isPublished', 'DESC')->get();
+        // if time is up, this destroy
+       return view('middle.program', compact('programs', 'info'));
     }
 
     /**
@@ -103,8 +136,9 @@ class programController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
         $program = Program::find($id);
-        return view('middle.edit', ['program' => $program]);
+        return view('middle.edit', compact('program', 'categories'));
     }
 
     /**

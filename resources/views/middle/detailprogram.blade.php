@@ -13,12 +13,20 @@
   box-sizing: border-box;
 }
 
+td,th{
+  width: 100px;
+}
+
 
 img{
     width: 100%;
     height: auto;
 }
-
+.img-bukti:hover{
+  transform: scale(1.1);
+  /* position: absolute; */
+  
+}
 .tab-body{
   text-align: justify !important;
 }
@@ -116,7 +124,7 @@ ul { list-style-type: none; }
                         <tbody>
                             <tr>
                                 <td>Donasi Dibuat</td>
-                                <td>{{$program->start_time}}</td>
+                                <td>{{$program->created_at->toDateString()}}</td>
                             </tr>
                             <tr>
                                 <td>Berakhir Pada</td>
@@ -128,7 +136,7 @@ ul { list-style-type: none; }
                             </tr>
                             <tr>
                                 <td>Donasi Terkumpul</td>
-                                <td>{{$program->donation_collected()}}</td>
+                                <td>{{$program->donation_collected}}</td>
                             </tr>
                             <tr>
                                 <td>Nomor Rekening Penampungan</td>
@@ -142,7 +150,7 @@ ul { list-style-type: none; }
                 <div class="tab-header">
                   <ul class="tab__navigation">
                     <li class="tab__nav-item active" data-tab="#tab1-1">Deskripsi Program</li>
-                    <li class="tab__nav-item" data-tab="#tab1-2">Laporan & Perkembangan</li>
+                    <li class="tab__nav-item" data-tab="#tab1-2">Laporan Perkembangan</li>
                   </ul>
                 </div>
 
@@ -152,7 +160,11 @@ ul { list-style-type: none; }
                   </div>
 
                   <div class="tab__content" id="tab1-2" style="display: none;">
-                    <a href="/laporanperkembangan/create/{{$program->id}}">Buat Laporan Baru</a>
+                    @if ($program->isPublished == 1)
+                    <a href="/laporanperkembangan/create/{{$program->id}}">Buat Laporan Baru</a>                    
+                    @else
+                    <span class="alert alert--warning">Tidak bisa buat laporan perkembangan, Program belum di publish Admin</span>
+                    @endif
 
 
                     <ul id="accordion" class="accordion">
@@ -186,13 +198,19 @@ ul { list-style-type: none; }
                       <h3>Pendonasi</h3>
                     </div>
                     <div class="box-body pt-0 px-0 responsive">
+                      
                       <table class="table--dark">
+                        @if ($donatur == 0)
+                            <tr>
+                              <th>Belum ada yang mendonasi</th>
+                            </tr>
+                        @else
+                            
                         <thead>
                           <tr>
                             <th>Nama Donatur</th>
                             <th>Nominal Donasi</th>
                             <th>Bukti Pembayaran</th>
-                            <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -200,21 +218,20 @@ ul { list-style-type: none; }
                           <tr>
                             <td>{{$donatur->nama_donatur}}</td>
                             <td>{{$donatur->nominal_donasi}}</td>
+
                             @if ($donatur->bukti_pembayaran == '')
                                 <td><p class="badge badge-green">Belum Konfirmasi</p></td>
                             @else    
-                            <td>{{$donatur->bukti_pembayaran}}</td>
+                                <td> <img class="img-bukti" src="{{$donatur->getFoto()}}"> </td>
                             @endif
-
-                            @if ($donatur->isVerified == 0)
-                                <td><a class="btn btn-light" href="/verify/{{$donatur->id}}">Verify</a></td>
-                            @else
-                                <td><p class="badge badge-primary">Diverifikasi</p></td>
-                            @endif
+                          
                           </tr>
                           @endforeach
                         </tbody>
+                        @endif
+
                       </table>
+
                     </div>
                     <div class="pagination-wrapper clearfix">
                       <ul class="pagination float--right">

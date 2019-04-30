@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    public function program()
+    {
+        return $this->hasMany('App\Program');
+    }
+
     use Notifiable;
 
     /**

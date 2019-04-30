@@ -4,13 +4,23 @@ namespace App\Http\Controllers\back;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\DonationConfirmation;
 use App\Program;
 use App\Category;
+use App\User;
+use App\Development;
+use App\Report;
 
 class backController extends Controller
 {
     public function index(){
-        return view('back.index');
+        $program = Program::count();
+        $programPublished = Program::where('isPublished', 1)->count();
+        $programSelected = Program::where('isSelected', 1)->count();
+        $user = User::where('role', 0)->count();
+        $category = Category::count();
+    
+        return view('back.index', compact('program', 'programPublished', 'user', 'category', 'programSelected'));
     }
 
     public function program(){
@@ -54,4 +64,18 @@ class backController extends Controller
         Category::destroy($id);
         return redirect()->back();
     }
+
+    public function detail($id){
+        $program = Program::find($id);
+        $donaturCount = DonationConfirmation::where('program_id', $id)->count();
+        $devs = Development::where('program_id', $program->id)->get();
+        $reports = Report::where('program_id', $program->id)->get();
+        return view('back.detail', compact('program', 'donaturCount', 'devs', 'reports'));
+    }
+
+    public function hapusProgram($id){
+        Program::destroy($id);
+        return redirect()->back();
+    }
+
 }

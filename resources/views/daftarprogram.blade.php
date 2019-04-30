@@ -1,6 +1,6 @@
 @extends('layouts.front-layouts')
 @section('title')
-    {{$programCategory->category_name}} 
+    Daftar Program
 @endsection
 @section('style')
     <link rel="stylesheet" href="{{asset('front-assets/css/program.css')}}">
@@ -15,8 +15,8 @@
     </section>
 
    <section class="section-2">
-       <div class="row m-4">
-           <div class="col-md-3">
+       <div class="row m-2">
+           <div class="col-lg-3 col-md-6">
                <form action="" method="get">
                    {{ csrf_field() }}
                    <div class="container">
@@ -27,26 +27,31 @@
                     </div>
                    </div>
                </form> 
-
+               <div class="mr-5">
                <span><strong>Pilih Kategori</strong></span>
-               <ul>
-                   @foreach ($categories as $category)
-                   <a href="/program/category/{{$category->id}}"><li>{{$category->category_name}}</li></a>
-                   @endforeach
-               </ul>
+                <ul>
+                    <a href="/daftarprogram"><li>Tampilkan Semua</li></a>
+                    @foreach ($categories as $category)
+                    <a href="/program/category/{{$category->id}}"><li>{{$category->category_name}}</li></a>
+                    @endforeach
+                </ul>
+               </div>
            </div>
 
-           <div class="col-md-9">
+           <div class="col-lg-9 col-md-6">
                 <div class="">
                     <div class="row">
-                    @foreach ($programCategory->programs as $program)
+                    @foreach ($programs as $program)
 
-                    <div class="col-md-6">
-                        <a href="/donasi/{{$program->id}}">
+                    <div class="col-lg-6 col-12">
                         <div class="card mt-4">
+                            <a href="/donasi/{{$program->id}}">
                             <img src="{{$program->getFoto()}}" alt="Program Images">
                             
                             <div class="container mt-3">
+                                    @if ($program->donation_collected >= $program->donation_target)
+                                    <div class="badge badge-success">Terdanai <i class="fa fa-check"></i></div>
+                            @endif
                                 <p class="title">{{$program->title}}</p>
                                 <div class="brief">
                                     <p>{{$program->brief_explanation}}</p>
@@ -55,14 +60,14 @@
 
                             <div class="programs-info">
                                 <div class="waktu">
-                                    <div class="container search">
+                                    <div class="container mt-2">
                                     <span>Kategori</span><p>{{$program->category->category_name}}</p>
                                     <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
                                     </div>
                                 </div>
 
                                 <div class="dana">
-                                    <div class="container">
+                                    <div class="container mt-2">
                                     <span>Terkumpul</span><p class="collected">
                                     @if($program->donation_collected == 0)
                                         0
@@ -73,8 +78,8 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
-                    </a>
                     </div>
 
                     @endforeach

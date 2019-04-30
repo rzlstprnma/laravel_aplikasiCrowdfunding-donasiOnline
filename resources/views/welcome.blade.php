@@ -20,18 +20,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4">
-                        <span>100000</span>
-                        <p>Donatur</p>
+                        <span>{{$programYangAda}}</span>
+                        <p>Program Yang Ada</p>
                     </div>
 
                     <div class="col-4">
-                        <span>100000</span>
-                        <p>Donatur</p>
+                        <span>{{$programPilihan}}</span>
+                        <p>Program Pilihan</p>
                     </div>
 
                     <div class="col-4">
-                         <span>100000</span>
-                        <p>Donatur</p>
+                        <span>{{$orangBerdonasi}}</span>
+                        <p>Orang Berdonasi</p>
                     </div>
                 </div>
             </div>
@@ -50,11 +50,14 @@
                 <div class="row">
                     @foreach ($programs as $program)
                     <div class="col-lg-4 col-md-6 pl-4">
-                        <a href="/donasi/{{$program->id}}">
                         <div class="card">
+                            <a href="/donasi/{{$program->id}}">
                             <img src="{{$program->getFoto()}}" alt="Program Image">
-
+                            
                             <div class="container mt-3">
+                                    @if ($program->donation_collected >= $program->donation_target)
+                                        <div class="badge badge-success">Terdanai <i class="fa fa-check"></i></div>
+                                    @endif
                                     <p class="title">{{$program->title}}</p>
                                     <div class="brief">
                                         <p>{{$program->brief_explanation}}</p>
@@ -70,25 +73,21 @@
 
                                     <div class="dana">
                                         <div class="container">
-                                        <span>Terkumpul</span><p class="collected">@if ($program->donation_collected == 0)
-                                            0
-                                        @else
-                                        {{$program->donation_collected}}
-                                        @endif</p>
+                                        <span>Terkumpul</span><p class="collected">{{$program->donation_collected}}</p>
                                         <span>Target</span><p>{{$program->donation_target}}</p>
                                         </div>
                                     </div>
                                     </div>
                             
-
+                                </a>
+                                </div>
                             </div>
-                    </div></a>
                     @endforeach
                 </div>
             </div>
 
         <div class="foot">
-            <button class="btn btn-more">Program Lainnya</button>
+            <a href="/daftarprogram" class="btn btn-more">Program Lainnya</a>
         </div>
     </section>
 
@@ -109,6 +108,9 @@
                                 <img src="{{$newProgram->getFoto()}}" alt="Program Image">
     
                                 <div class="container mt-3">
+                                    @if ($newProgram->donation_collected >= $newProgram->donation_target)
+                                        <div class="badge badge-success">Terdanai <i class="fa fa-check"></i></div>
+                                    @endif
                                         <p class="title">{{$newProgram->title}}</p><span>
                                         <div class="brief">
                                             <p>{{$newProgram->brief_explanation}}</p>
@@ -141,36 +143,24 @@
                 </div>
     
             <div class="foot">
-                <button class="btn btn-more">Program Lainnya</button>
+                <a href="/daftarprogram" class="btn btn-more">Program Lainnya</a>
             </div>
         </section>
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mt-4">
-                        <span>Media Sosial</span><hr>
-                        <ul>
-                            <li><a href="">Instagram</a></li>
-                            <li><a href="">Facebook</a></li>
-                            <li><a href="">Twitter</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-6 mt-4">
-                        <span>Daftar Menu</span><hr>
-                        <ul>
-                            <li><a href="">Daftar Program</a></li>
-                            <li><a href="">Program Pilihan</a></li>
-                            <li><a href="">Program Terbaru</a></li>
-                            <li><a href="">Galang Dana</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <p>Download Aplikasi ini di <span><a href="https://github.com/rzlstprnma/crowdfunding">https://github.com/rzlstprnma/crowdfunding</a></span></p>
-                </div>
-            </div>
-        </footer>
-
 @endsection 
+@section('script')
+    <script>
+        var jumboHeight = $('.jumbotron-fluid').outerHeight();
+                function parallax(){
+                var scrolled = $(window).scrollTop();
+                $('.jumbotron-fluid').css('height', (jumboHeight-scrolled) + 'px');
+                }
+                $(window).scroll(function(e){
+                parallax();
+                });
+                $(document).ready(function () {
+                $('div.hidden').fadeIn(300).removeClass('hidden');
+                parallax();
+            });
+    </script>
+@endsection
