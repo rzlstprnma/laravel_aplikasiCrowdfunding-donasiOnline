@@ -64,7 +64,6 @@
       $('.nav-bar').addClass('black');
       $('.nav-link').addClass('gelap')
       $('.logo').addClass('dark')
-      $('.prog').addClass('bosh')
     }else {
       $('.nav-bar').removeClass('black');
       $('.nav-link').removeClass('gelap');
@@ -72,8 +71,8 @@
     }
   })
 
-
 </script> 
+@include('sweetalert::alert')
 
 
 </body>

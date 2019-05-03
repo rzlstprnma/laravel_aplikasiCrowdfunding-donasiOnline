@@ -102,10 +102,14 @@ class programController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate( request() , [
-        //     'title' => 'max:100',
-        //     'donation_target' => 'numeric',
-        // ]);
+        $this->validate( request() , [
+            'title' => ['required', 'max:100'],
+            'donation_target' => ['required', 'numeric'],
+            'brief_explanation' => ['required', 'max:200'],
+            'donation_target' => ['required', 'min:7'],
+            'description' => ['required'],
+            'shelter_account_number' => ['required'],
+        ]);
 
        $program = Program::create($request->all());
        if($request->hasFile('photo'))

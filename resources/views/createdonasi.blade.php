@@ -92,7 +92,7 @@ img{
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Rp</div>
                                 </div>
-                                <input type="number" name="nominal_donasi" min="1000" class="form-control" id="nominal" placeholder="Nominal Donasi">
+                                <input type="number" name="nominal_donasi" min="1000" class="form-control" id="nominal" placeholder="Nominal Donasi" required>
                             </div>
                             <input type="hidden" name="program_id" value="{{$program->id}}">
 

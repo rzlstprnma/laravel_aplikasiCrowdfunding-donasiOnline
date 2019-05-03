@@ -48,7 +48,7 @@
                             
                             <div class="programs-info">
                                 <div class="waktu">
-                                    <div class="container search">
+                                    <div class="container">
                                     <span>Kategori</span><p>{{$program->category->category_name}}</p>
                                     <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
                                     </div>

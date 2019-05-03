@@ -66,7 +66,7 @@
                                     <div class="programs-info">
                                     <div class="waktu">
                                         <div class="container">
-                                        <span>Kategori</span><p>Kemanusiaan</p>
+                                        <span>Kategori</span><p>{{$program->category->category_name}}</p>
                                         <span>Berakhir Pada</span><p>{{$program->time_is_up}}</p>
                                         </div>
                                     </div>
@@ -152,15 +152,17 @@
     <script>
         var jumboHeight = $('.jumbotron-fluid').outerHeight();
                 function parallax(){
-                var scrolled = $(window).scrollTop();
-                $('.jumbotron-fluid').css('height', (jumboHeight-scrolled) + 'px');
-                }
-                $(window).scroll(function(e){
-                parallax();
+                    var scrolled = $(window).scrollTop();
+                        $('.jumbotron-fluid').css('height', (jumboHeight-scrolled) + 'px');
+                        }
+                        $(window).scroll(function(e){
+                        parallax();
                 });
-                $(document).ready(function () {
-                $('div.hidden').fadeIn(300).removeClass('hidden');
+
+            $(document).ready(function () {
+                    $('div.hidden').fadeIn(300).removeClass('hidden');
                 parallax();
             });
     </script>
 @endsection
+

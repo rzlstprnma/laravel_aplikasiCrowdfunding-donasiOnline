@@ -2,6 +2,14 @@
 @section('title')
     Dashboard
 @endsection
+@section('preloader')
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+@endsection
 @section('content')
 <div class="row">
         <div class="col-md-12 col-lg-4">

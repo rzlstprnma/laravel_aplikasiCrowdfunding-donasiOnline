@@ -176,6 +176,7 @@ ul { list-style-type: none; }
                           <div class="link"><i class="fa fa-database"></i>UPDATE #{{$i}}<i class="fa fa-chevron-down"></i></div>
                           <ul class="submenu">
                               <div class="container">
+                              <h2><strong>{{$dev->title}}</strong></h2>
                             <p class="pt-2">{!! $dev->description !!}</p>
                               </div>
                         </ul>
@@ -284,3 +285,4 @@ ul { list-style-type: none; }
     @endsection
 
 @endsection
+

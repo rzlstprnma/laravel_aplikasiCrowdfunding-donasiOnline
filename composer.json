@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "realrashid/sweet-alert": "^1.1",
         "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {

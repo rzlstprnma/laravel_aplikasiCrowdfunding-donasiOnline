@@ -77,6 +77,8 @@
   <script src="{{asset('middle-assets/js/main.min.js')}}"></script>
   <script src="{{asset('middle-assets/js/chartDemoWidget.min.js')}}"></script>
   @yield('script')
+  @include('sweetalert::alert')
+
 </body>
 
 </html>

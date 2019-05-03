@@ -10,6 +10,10 @@ textarea{
   height: 250px;
 }
 
+input, select, textarea{
+  border: 1px solid #CDD3DB !important;
+}
+
 [type="date"] {
   background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  99% 50% no-repeat ;
 }
@@ -57,9 +61,9 @@ textarea{
         <div class="file-upload-wrapper" data-text="Tambahkan Gambar">
           <input type="file" name="photo" class="file-upload-field">
         </div>
-        
-
-        <div class="form-group label--floating mt-2"><input type="text" name="brief_explanation"><label>Penjelasan Singkat</label></div>
+  
+        <div class="form-group label--floating mt-2">
+          <input type="text" name="brief_explanation" placeholder=""><label>Kalimat Ajakan</label></div>
 
         <div class="form-group label--floating"><input type="text" class="{{ $errors->has('donation_target') ? ' is-invalid' : '' }}" name="donation_target" value="{{ old('donation_target') }}"><label>Target Donasi</label></div>
 

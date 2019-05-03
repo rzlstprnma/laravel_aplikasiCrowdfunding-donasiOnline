@@ -89,7 +89,7 @@ class frontController extends Controller
          
         $program->update(['donation_collected' => $collected]);
             
-        return redirect()->back();
+        return redirect()->route('thxkonfir', ['id' => $konfirmasi->id]);
     }
 
     public function thx($id){

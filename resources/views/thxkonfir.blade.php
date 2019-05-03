@@ -12,57 +12,40 @@
         margin: 30px 300px;
     }
 
-    body{
-        background-color: #f2f2f2;
-    }
-
     .info-program{
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
         background: #fff;
-        min-height: 110px;
-        border: 1px solid #eaeaea;
-        border-radius: 8px;
-        margin-top: 20px;  
-    }
-
-    .info-program .col-3{
-        line-height: 120px !important; 
-    }
-
-    img{
-        width: 90%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .card-thx{
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
         background: #fff;
         border: 1px solid #eaeaea;
         border-radius: 8px;
         margin-top: 20px; 
         padding: 20px; 
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
     }
 
-    .alert-success{
-        border: 1px solid #689b74;
-        border-style: dashed;
+    .caption{
+        border: 1px solid #eaeaea;
+        padding: 5px;
+        text-align: justify;
     }
 
-    .btn-success{
-        border-radius: 2px;
-        box-shadow: 0px 2px 8px rgba(3, 3, 3, 0.5) !important;
+    img{
+        width: 90%;
+        margin-top: 25px;
+    }
+
+    .btn-back{
+        border-radius: 3px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        background: #f0f0f0;
     }
 
     @media(max-width: 720px){
         .contain-card{
             margin: 20px 20px;
-        }
-
-        img{
-            transition: .3s ease;
-        }
-
-        img:hover{
-            transform: scale(1.8);
         }
     }
 
@@ -72,54 +55,40 @@
 <body>
     
     <div class="contain-card">
-                <div class="info-program">
-                    <div class="container">
+        <div class="card-thx">
+            <div class="card-title container">
+                <h2>Terima Kasih <i class="fa fa-heart"></i></h2>
+            </div>
+            <div class="card-body">
+                    <div class="info-program">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="{{$program->getFoto()}}" alt="ProgramImages">
-                                </div>
-        
-                                <div class="col-9 mt-4">
-                                    <span>Terima Kasih Atas Rencana Pendonasian Anda Untuk :</span>
-                                    <p  class="text-uppercase"><strong>{{$program->title}}</strong></p>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="{{$program->getFoto()}}" alt="ProgramImages">
+                                    </div>
+            
+                                    <div class="col-9 mt-4">
+                                        <span>Anda telah berdonasi sebesar <strong>{{$donatur->nominal_donasi}}</strong> untuk :</span>
+                                        <p  class="text-uppercase"><strong>{{$program->title}}</strong></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="card-thx">
-                    <h5>Anda akan berdonasi dengan data sebagai berikut : </h5>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td>Nama Donatur</td>
-                                <th>{{$donatur->nama_donatur}}</th>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <th>{{$donatur->email}}</th>
-                            </tr>
-                            <tr>
-                                <td>Nominal Donasi</td>
-                                <th>{{$donatur->nominal_donasi}}</th>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="alert alert-success">
-                        <span>ID Transaksi : <strong>{{$donatur->id_transaksi}}</strong></span><br>
-                        <span>Nomor Rekening Tujuan : <strong>{{$program->shelter_account_number}}</strong></span>
+                    <div class="caption mt-2">
+                        <div class="container">
+                        <p>Berapapun uang yang Anda berikan, itu akan sangat membantu bagi mereka yang membutuhkan. Terima Kasih telah berdonasi, semoga amal ibadah Anda diterima disisi Allah SWT.</p>
+                        </div>
                     </div>
 
-                    <p class="text-justify alert alert-success">Silahkan melakukan pembayaran sesuai nominal donasi yang anda berikan ke nomor rekening tujuan juga melakukan konfirmasi pembayaran setelah melakukan pembayaran menggunakan ID transaksi, maka dari itu Anda perlu mengingat ID transaksi yang diberikan. Jika perlu, Anda bisa <i>screenshoot</i> halaman ini</p> 
-
-                    <a href="/" class="btn btn-success">Kembali Kehalaman Utama</a>
-                </div>
-
-        </div>
-         <script src="{{asset('front-assets/js/jquery.js')}}"></script>
+                    <a href="/" class="btn btn-back mt-3">Kembali</a>
+            </div>
+        </div>        
+    </div>
+    
+    <script src="{{asset('front-assets/js/jquery.js')}}"></script>
   <script src="{{asset('front-assets/js/bootstrap.min.js')}}"></script>
 </body>
 </html>
