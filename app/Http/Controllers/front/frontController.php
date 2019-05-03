@@ -10,6 +10,7 @@ use App\Development;
 use App\DonationConfirmation;
 use App\User;
 use App\Report;
+use Alert;
 
 class frontController extends Controller
 {
@@ -100,6 +101,7 @@ class frontController extends Controller
 
     public function report(Request $request){
         Report::create($request->all());
+        Alert::success('Laporan Dikirim', 'Terima Kasih telah mengirimkan laporan');
         return redirect()->back();
     }
 
