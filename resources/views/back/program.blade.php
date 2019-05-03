@@ -14,6 +14,7 @@
                                     <thead>
                                         <tr role="row">
                                             <th>Status</th>
+                                            <th>Orang Melaporkan</th>
                                             <th>Judul Program</th>
                                             <th>Mulai Pada</th>
                                             <th>Aksi</th>
@@ -32,6 +33,7 @@
                                             @else
                                                 <p class="badge badge-danger">Belum Dipublish</p>
                                             @endif</td>
+                                            <td>Orang Melaporkan <p class="badge badge-danger badge-pill">{{$program->report->count()}}</p></td>
                                             <td>{{$program->title}}</td>
                                             <td>{{$program->created_at->toDateString()}}</td>
                                             

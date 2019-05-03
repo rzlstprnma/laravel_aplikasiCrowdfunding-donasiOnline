@@ -3,6 +3,12 @@
    {{$program->title}}
 @endsection
 
+<style>
+.tab-content img, .card-body img{
+    width: 100%;
+}
+</style>
+
 @section('content')
 <div class="row">
     <div class="col-md-6">
@@ -64,7 +70,7 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home2" role="tabpanel">
-            <div class="p-4">
+            <div class="p-4 text-justify">
                 {!! $program->description !!}
             </div>
         </div>
@@ -84,7 +90,7 @@
                               </h5>
                                 </div>
                                 <div id="collapseOne{{$i}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="">
-                                    <div class="card-body">
+                                    <div class="card-body text-justify">
                                         <h3>{{$dev->title}}</h3>
                                         <span class="text-muted">{{$dev->created_at->toDateString()}}</span><br><br>
                                         {!! $dev->description !!}

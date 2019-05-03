@@ -24,8 +24,8 @@ class backController extends Controller
     }
 
     public function program(){
-        $programs = Program::all();
-        return view('back.program', ['programs' => $programs]);
+        $programs = Program::with('report')->get();
+        return view('back.program', compact('programs'));
     }
 
     public function categories(){

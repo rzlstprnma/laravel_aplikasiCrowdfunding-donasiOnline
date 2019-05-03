@@ -32,5 +32,9 @@ class Program extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function report()
+    {
+        return $this->hasMany('App\Report');
+    }
 
 }
