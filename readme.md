@@ -1,18 +1,51 @@
-Cara menjalankan : 
-- download atau clone project ini
-- simpan di tempat penimpanan project (kalo di xampp di /htdocs)
-- jalankan perintah 'composer install'
-- buat satu file bernama '.env' dan isinya copykan dari file '.env.example'
-- buat satu database (namanya bebas) contoh:crowdfunding
-- ubah isi DB_NAME di file .env dengan nama databasenya, contoh:DB_NAME:crowdfunding
-- ubah isi DB_USER dengan nama user database
-- ubah isi DB_PASSWORD dengan passwordnya
-- jalankan perintah 'php artisan migrate --seed'
-- jalankan perintah 'php artisan serve'
-- lalu buka browser dan ketik link 'localhost:8000'
+Cara menjalankan Aplikasi : 
+- Simpan Project di /htdocs (kalau pake xampp)
+- import database (crowdfunding.sql)
+- di dalam directory project buka terminal, ketikan "php artisan serve"
+- buka browser, ketikan url "localhost:8000"
+
+
+		=================================================
+		=================================================
+		==						======
+		==	Akun Admin : 				======
+		==	username : those@outlook.com		======
+		==	password : admin123			======
+								    ======
+		=================================================     ======
+								    ======
+		==	Akun User : 				======
+		==	username : nny@outlook.com		======
+		==	password : 12344321			======
+		==						======
+		=================================================
+		=================================================
+
+	Cara membuat akun baru: 
+	Akun User:
+		- Pilih menu daftar di nav-bar
+		- Isi data seperti biasa
+	Akun Admin:
+		- Pilih menu daftar di nav-bar
+		- Isi data seperti biasa
+		- Di database, di tabel user ada field "role", valuenya ubah jadi 1
 
 
 
-Akun Admin : 
-email = admin@gmail.com
-password = admin123321
+
+==============================TERIMA KASIH==========================================
+============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
