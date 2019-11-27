@@ -3,6 +3,9 @@ Demo Video: https://www.youtube.com/watch?v=uf8nFTFBaXA
 Cara menjalankan Aplikasi : 
 - Simpan Project di /htdocs (kalau pake xampp)
 - import database (crowdfunding.sql)
+- buka folder project, copykan .env.example, menjadi .env
+- isi DB_DATABASE, DB_USERNAME, DB_PASSWORD, sesuaikan dengan settingan database kamu
+- di dalam directory project buka terminal, ketikan "php artisan key:generate"
 - di dalam directory project buka terminal, ketikan "php artisan serve"
 - buka browser, ketikan url "localhost:8000"
 
