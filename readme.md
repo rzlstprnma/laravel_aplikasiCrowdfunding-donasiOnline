@@ -1,3 +1,5 @@
+Demo Video: https://www.youtube.com/watch?v=uf8nFTFBaXA
+
 Cara menjalankan Aplikasi : 
 - Simpan Project di /htdocs (kalau pake xampp)
 - import database (crowdfunding.sql)
