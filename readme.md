@@ -39,7 +39,7 @@ Cara menjalankan Aplikasi :
 		- Isi data seperti biasa
 		- Di database, di tabel user ada field "role", valuenya ubah jadi 1
 
-<div style="background-color: #c0d6f9; color: #0af">
+<div style="width: 150px; height: 30px; text-align: center; background: #c0d6f9; color: #0af">
 	TERIMA KASIH
 </div>
 
