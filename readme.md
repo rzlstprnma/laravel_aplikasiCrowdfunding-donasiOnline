@@ -1,8 +1,12 @@
+<b>Aplikasi Pendonasian Online</b>
+<br><hr>
+
 Demo Video: https://www.youtube.com/watch?v=uf8nFTFBaXA
 
 Cara menjalankan Aplikasi : 
 - Simpan Project di /htdocs (kalau pake xampp)
 - import database (crowdfunding.sql)
+- jalankan "composer install" di dalam terminal/cmd
 - buka folder project, copykan .env.example, menjadi .env
 - isi DB_DATABASE, DB_USERNAME, DB_PASSWORD, sesuaikan dengan settingan database kamu
 - di dalam directory project buka terminal, ketikan "php artisan key:generate"
@@ -35,11 +39,9 @@ Cara menjalankan Aplikasi :
 		- Isi data seperti biasa
 		- Di database, di tabel user ada field "role", valuenya ubah jadi 1
 
-
-
-
-==============================TERIMA KASIH==========================================
-============================================================================
+<div style="background-color: #c0d6f9; color: #0af">
+	TERIMA KASIH
+</div>
 
 
 
